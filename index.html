@@ -74,6 +74,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .who{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}.who legend{font-size:13px;color:var(--ink-3);margin-bottom:6px}.who label{display:inline-flex!important;flex-direction:row!important;text-transform:none!important;letter-spacing:normal!important;font-family:inherit!important;color:var(--ink)!important;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel-2);font-size:14px;cursor:pointer}.who input{accent-color:var(--accent)}
 .ebm{position:fixed;inset:0;z-index:200;background:rgba(29,21,48,.72);display:flex;flex-direction:column;padding:12px}.ebm[hidden]{display:none}.ebm-bar{display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px 14px 0 0;padding:10px 12px;color:var(--ink)}.ebm-sp{flex:1}.ebm iframe{flex:1;width:100%;border:0;background:#fff;border-radius:0 0 14px 14px}
 .news{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.news-item{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}.news-item:hover{border-color:var(--accent)}.news-item .cat{font:600 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}.news-item h3{font-size:16px;line-height:1.3}.news-item .when{font-size:12.5px;color:var(--ink-3)}
+.lang-btn{order:5;margin-left:12px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 11px;font:700 12px/1 var(--f-mono);letter-spacing:.06em;cursor:pointer}.lang-btn:hover{background:rgba(255,255,255,.26)}
+@media (max-width:900px){.lang-btn{margin-left:auto;margin-right:8px}.menu{margin-left:0!important}}
 .brand-logo{position:relative;display:inline-flex;flex:none}
 .brand svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 2px 8px rgba(252,61,33,.25))}
 .brand small{font:500 11px var(--f-mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:-3px}
@@ -516,7 +518,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
 <circle cx="512" cy="512" r="470" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="4"/>
 </svg><i class="ai-tag" title="AI-generated illustration">AI</i></span>
       <span>NE-AR<small>Naturalists Explorer – Augmented Reality</small></span></a>
-    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <button class="lang-btn" type="button" data-lang-btn data-no-i18n aria-label="Cambiar a español" title="Español">ES</button><button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <div class="links" id="navLinks">
       <a href="#home">Home</a><a href="#detective">Trend Detective</a><a href="#ebook">E-book</a><a href="#ar">AR App</a><a href="#learn">Courses</a><a href="#faq">FAQs</a><a href="#contact">Contact</a>
     </div>
@@ -1857,5 +1859,6 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
 /* ---------- offline support ---------- */
 if('serviceWorker' in navigator && location.protocol==='https:'){ addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{})); }
 </script>
+<script src="assets/i18n-es.js" defer></script>
 </body>
 </html>

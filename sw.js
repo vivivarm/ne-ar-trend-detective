@@ -2,7 +2,7 @@
    Pages: network first (always the newest version when online), cache as fallback.
    Files and fonts: cache first. Live NASA services and the contact form are never cached. */
 const CACHE='ne-ar-v1';
-const CORE=['./','index.html','data/cmip6-projections.json','manifest.webmanifest','assets/icon-192.png','assets/apple-touch-icon.png'];
+const CORE=['./','index.html','assets/i18n-es.js','data/cmip6-projections.json','manifest.webmanifest','assets/icon-192.png','assets/apple-touch-icon.png'];
 self.addEventListener('install',e=>{ e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())); });
 self.addEventListener('activate',e=>{ e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())); });
 self.addEventListener('fetch',e=>{
