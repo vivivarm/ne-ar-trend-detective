@@ -1457,7 +1457,9 @@ $('#contactForm').addEventListener('submit',async e=>{ e.preventDefault(); const
   if(!CONTACT_TO){ $('#cStatus').textContent=`Thanks, ${n}. The contact form is being connected; please try again soon.`; return; }
   const btn=e.target.querySelector('button[type=submit]'); btn.disabled=true; $('#cStatus').textContent='Sending…';
   try{ const r=await fetch('https://formsubmit.co/ajax/'+CONTACT_TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({name:n,email:em,role:who,message:msg,_subject:`NE-AR contact · ${who} · ${n}`,_template:'table',_captcha:'false'})});
-    if(!r.ok) throw 0; $('#cStatus').textContent=`Thanks, ${n}! Your message was sent to the NE-AR team.`; e.target.reset();
+    const j=await r.json().catch(()=>({})); console.log('[NE-AR contact]',r.status,j);
+    if(!r.ok||String(j.success)!=='true'){ $('#cStatus').innerHTML='<span style="color:var(--warn)">'+(j.message?String(j.message).replace(/</g,'&lt;'):'The message could not be sent.')+'</span>'; return; }
+    $('#cStatus').textContent=`Thanks, ${n}! Your message was sent to the NE-AR team.`; e.target.reset();
   }catch(_){ $('#cStatus').innerHTML='<span style="color:var(--warn)">The message could not be sent. Please try again later.</span>'; }
   finally{ btn.disabled=false; } });
 
