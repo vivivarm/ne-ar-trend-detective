@@ -1446,7 +1446,7 @@ const FAQ=[
   ['Who made NE-AR?','Team NE-AR, an international student team, for the NASA Space Apps Challenge. This is an independent project, not an official NASA website.']];
 function renderFaq(){ $('#faqList').innerHTML=FAQ.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join(''); }
 /* Contact: messages go to CONTACT_TO through FormSubmit (first message sends an activation email to that address) */
-const CONTACT_TO='';
+const CONTACT_TO='vavmart@gmail.com';
 $('#contactForm').addEventListener('submit',async e=>{ e.preventDefault(); const n=$('#cName').value.trim(), em=$('#cEmail').value.trim(), msg=$('#cMsg').value.trim(), who=(document.querySelector('input[name="cWho"]:checked')||{}).value||'';
   if(!n||!/^\S+@\S+\.\S+$/.test(em)||!msg){ $('#cStatus').innerHTML='<span style="color:var(--warn)">Please add your name, a valid email and a message.</span>'; return; }
   if(!CONTACT_TO){ $('#cStatus').textContent=`Thanks, ${n}. The contact form is being connected; please try again soon.`; return; }
