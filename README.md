@@ -6,9 +6,9 @@
 
 ## Contents
 - `index.html` – the website (Trend Detective, e-book, AR app, courses, FAQs)
-- `data/` – precomputed NASA data used by the site
-- `nasa/` – NASA data helpers
-- `docs/` – documentation
+- `data/` – NASA NEX-GDDP-CMIP6 projections used by the time machine
+- `nasa/` – screenshot of the test suite
+- `docs/` – statistical review (Nov 2026)
 - `tests.html` – checks for the statistics
 
 ## Data

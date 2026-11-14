@@ -1148,7 +1148,7 @@ async function loadLive(lon,lat,label,kind){ const la=+lat.toFixed(2), lo=+lon.t
   if(kind) keys.sort((a,b)=>(META[b].kind===kind)-(META[a].kind===kind));
   REG.custom={name:label?label[0]:'Your point',place:label?`${label[0]}, ${label[1]}`:fmtLL(la,lo),box:fmtLL(la,lo),n:1,land:label?`Live NASA data for ${label[0]} (${fmtLL(la,lo)})`:'Chosen by you on the map, live from NASA',ll:[lo,la],keys,main:keys[0],kind:kind||META[keys[0]].kind,live:true};
   return {keys,flat}; }
-function liveErr(err){ if(!isPub()) return `<b style="color:var(--sky)">Live NASA data opens on the published site.</b> On <a href="https://vivivarm.github.io/NEAR/" target="_blank" rel="noopener">vivivarm.github.io/NEAR</a> you can load any point on Earth. Here in the preview, choose one of the coloured rings.`;
+function liveErr(err){ if(!isPub()) return `<b style="color:var(--sky)">Live NASA data opens on the published site.</b> On <a href="https://vivivarm.github.io/ne-ar-trend-detective/" target="_blank" rel="noopener">vivivarm.github.io/ne-ar-trend-detective</a> you can load any point on Earth. Here in the preview, choose one of the coloured rings.`;
   return err&&err.message==='no data' ? `<b style="color:var(--sky)">Live coverage for this exact spot is coming soon.</b> Meanwhile, try a nearby point on land or one of the rings on the map.` : `<b style="color:var(--sky)">NASA’s live service is taking a short break.</b> Please try again in a moment, or choose one of the rings.`; }
 const CLUE_NOUN={snow:'snow on the ground',heat:'temperature record',rain:'rain record'};
 async function livePoint(lon,lat,label,autoGo){ const v=VV(); const setMsg=h=>{ const mm=$('#mapMsg'); if(mm) mm.innerHTML=h; else toast(h.replace(/<[^>]+>/g,'')); };
@@ -1718,7 +1718,7 @@ async function answerOne(a,P,pl){ const es=P.es;
   const label=pl.type==='reg'?pname(pl.id):CITIES[pl.i][0];
   await steps(a,[T(es,`Locating ${label}`,`Ubicando ${label}`),T(es,pl.type==='city'?'Calling NASA POWER live':'Reading 540 months of NASA data',pl.type==='city'?'Consultando NASA POWER en vivo':'Leyendo 540 meses de datos de la NASA'),T(es,'Running Mann-Kendall + Sen’s slope','Corriendo Mann-Kendall + pendiente de Sen')].concat(P.future?[T(es,'Opening NASA CMIP6 projections','Abriendo proyecciones CMIP6 de la NASA')]:[]));
   const res=await resolve(a,P,pl);
-  if(res.offline){ const c=document.createElement('div'); c.className='ma-card'; c.innerHTML=`<p>${T(es,`${res.city[0]} uses live NASA data, which opens on the published site.`,`${res.city[0]} usa datos en vivo de la NASA, que funcionan en el sitio publicado.`)} <a href="https://vivivarm.github.io/NEAR/" target="_blank" rel="noopener">vivivarm.github.io/NEAR</a></p>`; a.appendChild(c); return; }
+  if(res.offline){ const c=document.createElement('div'); c.className='ma-card'; c.innerHTML=`<p>${T(es,`${res.city[0]} uses live NASA data, which opens on the published site.`,`${res.city[0]} usa datos en vivo de la NASA, que funcionan en el sitio publicado.`)} <a href="https://vivivarm.github.io/ne-ar-trend-detective/" target="_blank" rel="noopener">vivivarm.github.io/ne-ar-trend-detective</a></p>`; a.appendChild(c); return; }
   const {id,k,note}=res, r=SCAN[k], m=META[k];
   const card=document.createElement('div'); card.className='ma-card'; a.appendChild(card);
   const head=`<div class="ma-title"><span>${id==='custom'?REG.custom.place:REG[id].name+' · '+REG[id].place.split(',').pop().trim()}</span><span>${r.p<0.05?T(es,'Significant','Significativo'):T(es,'Could be chance','Puede ser azar')}</span></div>
