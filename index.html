@@ -54,6 +54,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.shots img{width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
 .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}.member{display:flex;flex-direction:column;gap:8px}.member .role{font-size:13px;color:var(--ink-3)}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.badges a{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 9px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line);color:var(--ink);text-decoration:none}.badges img{height:28px}
 .who{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}.who legend{font-size:13px;color:var(--ink-3);margin-bottom:6px}.who label{display:inline-flex!important;flex-direction:row!important;text-transform:none!important;letter-spacing:normal!important;font-family:inherit!important;color:var(--ink)!important;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel-2);font-size:14px;cursor:pointer}.who input{accent-color:var(--accent)}
+.ebm{position:fixed;inset:0;z-index:200;background:rgba(29,21,48,.72);display:flex;flex-direction:column;padding:12px}.ebm[hidden]{display:none}.ebm-bar{display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px 14px 0 0;padding:10px 12px;color:var(--ink)}.ebm-sp{flex:1}.ebm iframe{flex:1;width:100%;border:0;background:#fff;border-radius:0 0 14px 14px}
 .brand-logo{position:relative;display:inline-flex;flex:none}
 .brand svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 2px 8px rgba(252,61,33,.25))}
 .brand small{font:500 11px var(--f-mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:-3px}
@@ -757,6 +758,10 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
 </main>
 
 <footer><div class="wrap"><span>Data: <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> (MERRA-2), 1981–2025 · <a href="https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp-cmip6" target="_blank" rel="noopener">NASA NEX-GDDP-CMIP6</a> projections to 2100</span></div></footer>
+<div class="ebm" id="ebookModal" hidden role="dialog" aria-modal="true" aria-label="E-book">
+  <div class="ebm-bar"><strong>NE-AR e-book</strong><span class="ebm-sp"></span><a class="btn sm" id="ebookNewTab" target="_blank" rel="noopener">Open in new tab ↗</a><button class="btn sm primary" id="ebookClose" type="button">✕ Close</button></div>
+  <iframe id="ebookFrame" title="NE-AR e-book" allow="fullscreen" loading="lazy"></iframe>
+</div>
 <div class="toast" id="toast" role="status"></div>
 <div class="demo-bar" id="demoBar" hidden><p id="demoText"></p><button class="btn sm" id="demoStop">Stop demo</button></div>
 
@@ -1785,6 +1790,18 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
   $$('[data-qr="apk"]').forEach(q=>{ q.hidden=true; });
   $$('[data-link="arWeb"]').forEach(a=>{ const n=document.createElement('p'); n.className='small muted'; n.textContent='On iPhone and iPad, open the AR view in Safari. The downloadable app is for Android.'; a.insertAdjacentElement('afterend',n); });
   const d=$('#dlBox'); if(d){ d.querySelector('p').textContent='The downloadable app is for Android. On iPhone and iPad, use the AR view in Safari.'; const b=document.createElement('a'); b.className='btn primary'; b.dataset.link='arWeb'; b.target='_blank'; b.rel='noopener'; b.textContent='View in AR (web) ↗'; if(LINKS.arWeb) b.href=LINKS.arWeb; d.appendChild(b); }
+})();
+
+/* ---------- e-book inside the page, with a close button ---------- */
+(function(){
+  const m=$('#ebookModal'), f=$('#ebookFrame'); let last=null;
+  const close=()=>{ m.hidden=true; f.src='about:blank'; document.body.style.overflow=''; if(last) last.focus(); };
+  document.addEventListener('click',e=>{ const a=e.target.closest('a[data-link="ebook"]'); if(!a||!LINKS.ebook||e.ctrlKey||e.metaKey||e.shiftKey) return;
+    e.preventDefault(); last=a; f.src=LINKS.ebook; $('#ebookNewTab').href=LINKS.ebook; m.hidden=false; document.body.style.overflow='hidden'; $('#ebookClose').focus(); });
+  $('#ebookClose').addEventListener('click',close);
+  $('#ebookNewTab').addEventListener('click',close);
+  m.addEventListener('click',e=>{ if(e.target===m) close(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!m.hidden) close(); });
 })();
 </script>
 </body>
