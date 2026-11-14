@@ -1767,6 +1767,16 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
   if(TEAM.length){ $('#team').hidden=false; $('#teamGrid').innerHTML=TEAM.map(m=>`<div class="panel member"><h3 style="font-size:18px">${esc(m.name)}</h3>${m.role?`<span class="role">${esc(m.role)}</span>`:''}<div class="badges">${(m.badges||[]).map(b=>`<a href="${esc(b.url)}" target="_blank" rel="noopener">${b.img?`<img src="${esc(b.img)}" alt="">`:''}${esc(b.label)} ↗</a>`).join('')}</div></div>`).join(''); }
   if(SHOTS.length){ $('#shotsWrap').hidden=false; $('#shots').innerHTML=SHOTS.map(s=>`<img src="${esc(s)}" alt="Screen from the NE-AR app" loading="lazy">`).join(''); }
 })();
+
+/* ---------- iPhone / iPad: the .apk is Android only, point to the web AR instead ---------- */
+(function(){
+  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(!ios) return;
+  $$('[data-link="apk"],[data-link="apkDrive"]').forEach(a=>{ a.hidden=true; });
+  $$('[data-qr="apk"]').forEach(q=>{ q.hidden=true; });
+  $$('[data-link="arWeb"]').forEach(a=>{ const n=document.createElement('p'); n.className='small muted'; n.textContent='On iPhone and iPad, open the AR view in Safari. The downloadable app is for Android.'; a.insertAdjacentElement('afterend',n); });
+  const d=$('#dlBox'); if(d){ d.querySelector('p').textContent='The downloadable app is for Android. On iPhone and iPad, use the AR view in Safari.'; const b=document.createElement('a'); b.className='btn primary'; b.dataset.link='arWeb'; b.target='_blank'; b.rel='noopener'; b.textContent='View in AR (web) ↗'; if(LINKS.arWeb) b.href=LINKS.arWeb; d.appendChild(b); }
+})();
 </script>
 </body>
 </html>
