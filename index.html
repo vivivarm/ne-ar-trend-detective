@@ -469,9 +469,10 @@ body{background:var(--bg);color:var(--ink);background-image:radial-gradient(900p
 .seg button[aria-pressed="true"],.tabs button[aria-selected="true"]{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
 .stat,.casefile{background:var(--panel-2)!important}
 .ma-fab span{background:#2E1065}
+.nav .ai-tag{color:rgba(255,255,255,.6)!important;text-shadow:none}
 footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
-.ai-tag{top:auto!important;bottom:-2px!important;right:-4px!important;font:600 6.5px/1 var(--f-mono,monospace)!important;letter-spacing:.06em!important;color:#5B21B6!important;background:rgba(255,255,255,.92)!important;border:0!important;border-radius:3px!important;padding:1px 2px!important;opacity:.85;box-shadow:0 1px 2px rgba(0,0,0,.15)}
-.hero-logo .ai-tag{bottom:6px!important;right:4px!important;font-size:8px!important}
+.ai-tag{top:auto!important;bottom:-1px!important;right:-2px!important;font:500 6px/1 var(--f-mono,monospace)!important;letter-spacing:.04em!important;color:rgba(120,110,150,.9)!important;background:transparent!important;border:0!important;padding:0!important;opacity:.7;box-shadow:none!important;text-shadow:0 0 2px #fff}
+.hero-logo .ai-tag{bottom:4px!important;right:2px!important;font-size:7px!important}
 </style>
 </head>
 <body>
@@ -1415,7 +1416,8 @@ const QUIZ=[
   ['What does the Mann-Kendall test compare?',['Every pair of years: is the later one higher or lower?','Each month with the next month only','The first year with the last year only'],0],
   ["Why is Sen's slope robust?",['It ignores half of the data','It is the median of all pairwise slopes, so one extreme year cannot drag it','It always gives zero'],1],
   ['A trend is “not significant”. What should a detective do next?',['Conclude that nothing is changing','Try a longer period, another season or another variable','Delete the data'],1]];
-function renderLearn(){ $('#quiz').innerHTML=QUIZ.map(([q,opts],i)=>`<fieldset><legend>${i+1}. ${q}</legend>${opts.map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}"><span>${o}</span></label>`).join('')}</fieldset>`).join(''); $('#quizScore').textContent=''; $('#certBox').hidden=true; }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const k=Math.floor(Math.random()*(i+1)); [a[i],a[k]]=[a[k],a[i]]; } return a; }
+function renderLearn(){ $('#quiz').innerHTML=QUIZ.map(([q,opts],i)=>`<fieldset><legend>${i+1}. ${q}</legend>${shuffle(opts.map((o,j)=>[o,j])).map(([o,j])=>`<label><input type="radio" name="q${i}" value="${j}"><span>${o}</span></label>`).join('')}</fieldset>`).join(''); $('#quizScore').textContent=''; $('#certBox').hidden=true; }
 $('#quizCheck').addEventListener('click',()=>{ let s=0; QUIZ.forEach(([,opts,a],i)=>{ const pick=document.querySelector(`input[name=q${i}]:checked`); $$(`input[name=q${i}]`).forEach(inp=>{ const lab=inp.closest('label'); lab.classList.remove('ok','bad'); if(+inp.value===a && pick) lab.classList.add('ok'); else if(inp===pick) lab.classList.add('bad'); }); if(pick && +pick.value===a) s++; });
   $('#quizScore').innerHTML = s>=4 ? `<b style="color:var(--good)">${s} of 5. You passed!</b> Add your name to see your certificate.` : `${s} of 5. Review the lessons and try again. You need 4 to pass.`; $('#certBox').hidden=s<4; $('#certBox').dataset.score=s; drawCert(); });
 function drawCert(){ const n=($('#certName').value||'Your name').trim(), s=$('#certBox').dataset.score||5, d=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
