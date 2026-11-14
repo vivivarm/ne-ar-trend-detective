@@ -51,6 +51,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:700 19px var(--f-display);letter-spacing:-.01em}
 .hero-brand{display:flex;align-items:center;gap:18px}.hero-logo svg{width:clamp(72px,11vw,112px);height:auto;display:block}.hero-logo .ai-tag{top:2px;right:2px}.hero-name{font:800 clamp(56px,9vw,104px)/.9 var(--f-display);letter-spacing:-.04em;color:var(--ink)}.hero-brand .fullform{margin-top:6px}
 .share-box{margin-top:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}.share-btns{display:flex;flex-wrap:wrap;gap:8px}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.shots img{width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}.member{display:flex;flex-direction:column;gap:8px}.member .role{font-size:13px;color:var(--ink-3)}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.badges a{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 9px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line);color:var(--ink);text-decoration:none}.badges img{height:28px}
 .brand-logo{position:relative;display:inline-flex;flex:none}
 .brand svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 2px 8px rgba(252,61,33,.25))}
 .brand small{font:500 11px var(--f-mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:-3px}
@@ -559,6 +561,10 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
         <div class="panel stack"><span class="lbl">04 · Project demo</span><h3>Project demo</h3><p class="small muted">The slides that walk through the whole project.</p><a class="btn" data-link="demo" target="_blank" rel="noopener">Open the project demo ↗</a></div>
       </div>
     </section>
+    <section class="section" id="team" hidden>
+      <div class="section-head"><div><div class="eyebrow">Team NE-AR</div><h2>Team members and badges</h2><p>The people behind NE-AR and the credentials they bring.</p></div></div>
+      <div class="team" id="teamGrid"></div>
+    </section>
   </div>
 </main>
 
@@ -681,6 +687,19 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
       <div class="ar-links"><div class="stack"><a class="btn primary" data-link="arWeb" target="_blank" rel="noopener">View in AR (web) ↗</a><a class="btn" data-link="apk" target="_blank" rel="noopener">Download the Android app ↗</a><p class="small muted link-note" data-link-note></p></div><figure class="qr" data-qr="apk"><div class="qr-img"></div><figcaption class="small muted">Scan to get the app</figcaption></figure></div></div>
     <div class="ar-grid" id="arGrid"></div>
     <p class="small muted" style="margin-top:16px">Preview of the data models. Full AR scenes, including the past, the present and two possible futures, are being built for the NE-AR app.</p>
+  </div>
+
+  <div class="wrap">
+    <section class="section" id="about-app" style="padding-top:8px">
+      <div class="section-head"><div><div class="eyebrow">About the app</div><h2>The NE-AR app</h2><p>NE-AR turns NASA Earth data into 3D models you can place on a table, walk around and explore with your phone camera.</p></div></div>
+      <div class="deliv">
+        <div class="panel stack"><span class="lbl">What it does</span><h3>Data you can hold</h3><p class="small muted">Each block is one month of real NASA data. Height and colour show how far that month was from normal, so a trend becomes something you can see from every side.</p></div>
+        <div class="panel stack"><span class="lbl">Places</span><h3>Three Earth system hotspots</h3><p class="small muted">Western Himalaya (snow), Thar Desert (air temperature) and the Sundarbans (rainfall), the same places as the Trend Detective and the e-book.</p></div>
+        <div class="panel stack"><span class="lbl">How to use it</span><h3>Point, place, explore</h3><p class="small muted">Open the app, point your camera at a flat surface and tap to place the model. Pinch to resize and walk around it to read the years.</p></div>
+        <div class="panel stack" id="dlBox"><span class="lbl">Download</span><h3>Get the app</h3><p class="small muted">Android app (.apk). You may need to allow installs from your browser.</p><a class="btn primary" data-link="apk" target="_blank" rel="noopener">Download from Dropbox ↗</a><a class="btn" data-optional data-link="apkDrive" target="_blank" rel="noopener">Download from Google Drive ↗</a></div>
+      </div>
+      <div id="shotsWrap" hidden><h3 style="margin:28px 0 12px">Screens from the app</h3><div class="shots" id="shots"></div></div>
+    </section>
   </div>
 </main>
 
@@ -1032,7 +1051,7 @@ const GUIDE={v:'rain',l:'sundarbans'};
 // Links for the deliverables, the end of the questionnaire, the AR page and the e-book. Paste new links here.
 // appYear: set to 2026 when the new AR app links are in (hides the '2025 version' note).
 // An empty string shows the button as "coming soon".
-const LINKS={arWeb:'https://www.speaksprouts.com/delhiAR/',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'',appYear:2025};
+const LINKS={arWeb:'https://www.speaksprouts.com/delhiAR/',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'',apkDrive:'',appYear:2025};
 const S={guided:true,step:1,max:1,v:null,l:null,key:null,view:'raw',y0:1981,y1:2025,method:'mk',season:'all',tested:false,future:'act',bandYear:2025,result:null};
 const VV=()=>VARS.find(v=>v.id===S.v), M=()=>META[S.key], arrS=()=>SER[S.key];
 const STEPS=['Q1 Variable','Q2 Location','Evidence','Test','Normal?','Verdict'];
@@ -1076,8 +1095,8 @@ function answerCard(){ const m=M(), K=KIND[m.kind], v=VV(), R=REG[S.l], c=comput
     <div style="border-color:${sig?kc(S.key):'var(--line)'}"><span class="lbl">Answer: ${v?v.q:'is it changing?'}</span><div class="nc-v" style="font-size:17px">${ans}</div></div></div>
     <p class="interp small"><b>Interpretation:</b> ${extra.join(' ')} The futures below show what may come next.</p>`; }
 /* links (AR web, app, e-book) and QR code */
-function renderLinks(){ $$('[data-link]').forEach(a=>{ const u=LINKS[a.dataset.link]; if(u){ a.href=u; a.removeAttribute('aria-disabled'); a.removeAttribute('tabindex'); if(a.dataset.label){ a.textContent=a.dataset.label; } }
-    else { if(!a.dataset.label) a.dataset.label=a.textContent; a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.setAttribute('tabindex','-1'); a.textContent=a.dataset.label.replace(/ ↗$/,'')+' · coming soon'; } });
+function renderLinks(){ $$('[data-link]').forEach(a=>{ const u=LINKS[a.dataset.link]; if(u){ a.hidden=false; a.href=u; a.removeAttribute('aria-disabled'); a.removeAttribute('tabindex'); if(a.dataset.label){ a.textContent=a.dataset.label; } }
+    else if(a.hasAttribute('data-optional')){ a.hidden=true; } else { if(!a.dataset.label) a.dataset.label=a.textContent; a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.setAttribute('tabindex','-1'); a.textContent=a.dataset.label.replace(/ ↗$/,'')+' · coming soon'; } });
   $$('[data-qr]').forEach(f=>{ const u=LINKS[f.dataset.qr]; const box=f.querySelector('.qr-img'); if(!u||typeof qrcode!=='function'){ f.hidden=true; return; } f.hidden=false;
     if(box.dataset.u===u) return; try{ const q=qrcode(0,'M'); q.addData(u); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true}); box.dataset.u=u; }catch(e){ f.hidden=true; } });
   $$('[data-link-note]').forEach(p=>{ const old=LINKS.appYear<2026; p.textContent=old?'The AR app links open the 2025 version. The 2026 app is on the way.':''; p.hidden=!old; }); }
@@ -1736,6 +1755,17 @@ window.MagicDetective={open,ask,parse};
   ['shareWa','shareX','shareFb'].forEach(id=>$('#'+id).addEventListener('pointerdown',upd)); upd();
   $('#shareCase').addEventListener('click',async()=>{ upd(); try{ if(navigator.share){ await navigator.share({title:'NE-AR · Earth System Trend Detective',text:msg(),url:url()}); return; } }catch(e){ if(e&&e.name==='AbortError') return; } try{ await navigator.clipboard.writeText(msg()+' '+url()); toast('Link copied'); }catch(e){ toast(url()); } });
   $('#shareCopy').addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText(url()); toast('Link copied'); }catch(e){ toast(url()); } });
+})();
+
+/* ---------- team, badges and app screens (fill these lists; empty sections stay hidden) ---------- */
+const TEAM=[
+  /* {name:'Full name', role:'Role', badges:[{label:'Credly · Badge name', url:'https://www.credly.com/badges/...', img:''},{label:'ORCID', url:'https://orcid.org/0000-...'}]} */
+];
+const SHOTS=[ /* 'docs/app/screen1.png' */ ];
+(function(){
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  if(TEAM.length){ $('#team').hidden=false; $('#teamGrid').innerHTML=TEAM.map(m=>`<div class="panel member"><h3 style="font-size:18px">${esc(m.name)}</h3>${m.role?`<span class="role">${esc(m.role)}</span>`:''}<div class="badges">${(m.badges||[]).map(b=>`<a href="${esc(b.url)}" target="_blank" rel="noopener">${b.img?`<img src="${esc(b.img)}" alt="">`:''}${esc(b.label)} ↗</a>`).join('')}</div></div>`).join(''); }
+  if(SHOTS.length){ $('#shotsWrap').hidden=false; $('#shots').innerHTML=SHOTS.map(s=>`<img src="${esc(s)}" alt="Screen from the NE-AR app" loading="lazy">`).join(''); }
 })();
 </script>
 </body>
