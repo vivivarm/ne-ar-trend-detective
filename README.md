@@ -15,5 +15,5 @@
 - [NASA POWER](https://power.larc.nasa.gov/) (MERRA-2), 1981–2025
 - [NASA NEX-GDDP-CMIP6](https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp-cmip6) climate projections to 2100
 
-## History
-This repository organizes the official versions of the project. The content and full development history come from [vivivarm/NEAR](https://github.com/vivivarm/NEAR).
+---
+*Earlier development: [vivivarm/NEAR](https://github.com/vivivarm/NEAR)*
