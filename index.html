@@ -1140,7 +1140,7 @@ function renderLinks(){ $$('[data-link]').forEach(a=>{ const u=LINKS[a.dataset.l
     else if(a.hasAttribute('data-optional')){ a.hidden=true; } else { if(!a.dataset.label) a.dataset.label=a.textContent; a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.setAttribute('tabindex','-1'); a.textContent=a.dataset.label.replace(/ ↗$/,'')+' · coming soon'; } });
   $$('[data-qr]').forEach(f=>{ const u=LINKS[f.dataset.qr]; const box=f.querySelector('.qr-img'); if(!u||typeof qrcode!=='function'){ f.hidden=true; return; } f.hidden=false;
     if(box.dataset.u===u) return; try{ const q=qrcode(0,'M'); q.addData(u); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true}); box.dataset.u=u; }catch(e){ f.hidden=true; } });
-  $$('[data-link-note]').forEach(p=>{ const old=LINKS.appYear<2026; p.textContent=old?'The AR app links open the 2025 version. The 2026 app is on the way.':''; p.hidden=!old; }); }
+  $$('[data-link-note]').forEach(p=>{ const old=LINKS.appYear<2026; p.textContent=old?'The NE-AR app was first built last year and is being updated with the new data.':''; p.hidden=!old; }); }
 /* step 1 */
 function aodWitness(reg){ const mo=AOD_MODIS[reg], me=SER['AOD_'+reg]; if(!mo||!me) return null; const ann=(arr,off)=>{ const out=[]; for(let y=2003;y<=2025;y++){ const v=[]; for(let i=0;i<12;i++){ const x=arr[(y-2003)*12+i+off]; if(x!=null) v.push(x); } if(v.length>=10) out.push({year:y,value:v.reduce((a,b)=>a+b,0)/v.length}); } return out; };
   const a=mannKendall(ann(me,(2003-Y0)*12)), b=mannKendall(ann(mo,6)); return {a,b,agree:Math.sign(a.slope)===Math.sign(b.slope)&&(a.p<0.05)===(b.p<0.05)}; }
