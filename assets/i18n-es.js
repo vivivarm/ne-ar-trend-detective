@@ -466,6 +466,15 @@ EXACT: {
 "Drag to turn the model. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.":"Arrastra para girar el modelo. En el celular, toca “Ponlo sobre tu mesa” y apunta la cámara a una superficie plana. Cada bloque es un mes: 1981 al fondo, 2025 al frente.",
 "Team leader":"Líder del equipo",
 "Website and trend algorithm":"Sitio web y algoritmo de tendencias",
+"Topics and discussion":"Temas y discusión","NE-AR Environmental Forum":"Foro ambiental NE-AR",
+"Discuss the trends you find: rainfall, heat, snow, air quality and other environmental issues. Pick a topic, read what others think and share your own evidence.":"Conversa sobre las tendencias que encuentres: lluvia, calor, nieve, calidad del aire y otros temas ambientales. Elige un tema, lee lo que piensan otros y comparte tu propia evidencia.",
+"Rain in the Sundarbans":"Lluvia en los Sundarbans","Heat in the Thar Desert":"Calor en el desierto de Thar","Snow in the Himalaya":"Nieve en el Himalaya","Air quality and haze":"Calidad del aire y bruma","Climate, drought and other issues":"Clima, sequía y otros temas",
+"Monsoon rain is rising in the delta. What does heavier rain mean for mangroves, farms and people?":"La lluvia del monzón está aumentando en el delta. ¿Qué significa más lluvia para los manglares, las fincas y la gente?",
+"The yearly average looks flat, but nights are warming. What changes when nights stay hot?":"El promedio anual no cambia, pero las noches se están calentando. ¿Qué cambia cuando las noches siguen calientes?",
+"Snow depth is rising while glaciers melt. How can both be true?":"La profundidad de nieve sube mientras los glaciares se derriten. ¿Cómo pueden ser ciertas las dos cosas?",
+"Aerosols block sunlight. What is making the air hazier where you live?":"Los aerosoles bloquean la luz del sol. ¿Qué está volviendo más brumoso el aire donde vives?",
+"Questions, ideas and evidence about any Earth system trend.":"Preguntas, ideas y evidencia sobre cualquier tendencia del sistema Tierra.",
+"The forum is opening soon.":"El foro abre muy pronto.",
 "Thanks! Your message was sent to the NE-AR team.":"¡Gracias! Tu mensaje llegó al equipo NE-AR."
 },
 PATTERNS: [

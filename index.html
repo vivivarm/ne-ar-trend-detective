@@ -77,6 +77,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lang-btn{order:5;margin-left:12px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 11px;font:700 12px/1 var(--f-mono);letter-spacing:.06em;cursor:pointer}.lang-btn:hover{background:rgba(255,255,255,.26)}
 @media (max-width:900px){.lang-btn{margin-left:auto;margin-right:8px}.menu{margin-left:0!important}}
 .ar-stage{flex:1;position:relative;background:#F5F2FB;border-radius:0 0 14px 14px;overflow:hidden;display:flex;flex-direction:column}.ar-stage model-viewer{flex:1}.ar-go{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);white-space:nowrap}.ar-help{padding:10px 14px;margin:0;background:#fff}
+.forum-topics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.forum-topics button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font:600 13.5px var(--f-body,inherit);cursor:pointer}.forum-topics button[aria-selected="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}.forum-box{min-height:160px}
 .brand-logo{position:relative;display:inline-flex;flex:none}
 .brand svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 2px 8px rgba(252,61,33,.25))}
 .brand small{font:500 11px var(--f-mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:-3px}
@@ -583,6 +584,11 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
         <li><i>05</i><b>Normal or abnormal?</b><span>What was normal, and what is abnormal now.</span></li>
         <li><i>06</i><b>Reach a verdict</b><span>Your answer, two futures and the AR view.</span></li>
       </ol>
+    </section>
+    <section class="section" id="forum" style="padding-top:8px">
+      <div class="section-head"><div><div class="eyebrow">Topics and discussion</div><h2>NE-AR Environmental Forum</h2><p>Discuss the trends you find: rainfall, heat, snow, air quality and other environmental issues. Pick a topic, read what others think and share your own evidence.</p></div></div>
+      <div class="forum-topics" id="forumTopics" role="tablist" aria-label="Forum topics"></div>
+      <div class="panel forum-box"><h3 id="forumTitle" style="font-size:18px"></h3><p class="small muted" id="forumDesc"></p><div id="forumThread" aria-live="polite"></div></div>
     </section>
     <section class="section" id="news" style="padding-top:8px">
       <div class="section-head"><div><div class="eyebrow">Earth right now · live from NASA</div><h2>News feed</h2><p>Natural events that NASA is tracking at this moment: storms, wildfires, volcanoes, floods and more. Each one is a clue about how Earth's systems are behaving today.</p></div></div>
@@ -1884,6 +1890,28 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
   $('#arClose').addEventListener('click',close);
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!m.hidden) close(); });
   if(/#ar/.test(location.hash)) load();
+})();
+
+/* ---------- forum: one GitHub Discussions thread per topic, through giscus (free; posting needs a GitHub account) ---------- */
+const FORUM={repo:'vivivarm/ne-ar-trend-detective', repoId:'R_kgDOVumwgA', category:'Announcements', categoryId:''};
+const FORUM_TOPICS=[
+  ['sundarbans-rain','Rain in the Sundarbans','Monsoon rain is rising in the delta. What does heavier rain mean for mangroves, farms and people?'],
+  ['thar-heat','Heat in the Thar Desert','The yearly average looks flat, but nights are warming. What changes when nights stay hot?'],
+  ['himalaya-snow','Snow in the Himalaya','Snow depth is rising while glaciers melt. How can both be true?'],
+  ['air-quality','Air quality and haze','Aerosols block sunlight. What is making the air hazier where you live?'],
+  ['general','Climate, drought and other issues','Questions, ideas and evidence about any Earth system trend.']];
+(function(){
+  const box=$('#forumTopics'); if(!box) return; let cur=null;
+  box.innerHTML=FORUM_TOPICS.map(([id,t])=>`<button type="button" role="tab" data-topic="${id}" aria-selected="false">${t}</button>`).join('');
+  const open=id=>{ if(cur===id) return; cur=id; const T=FORUM_TOPICS.find(x=>x[0]===id);
+    $$('#forumTopics button').forEach(b=>b.setAttribute('aria-selected',b.dataset.topic===id));
+    $('#forumTitle').textContent=T[1]; $('#forumDesc').textContent=T[2]; const th=$('#forumThread'); th.innerHTML='';
+    if(!FORUM.categoryId){ th.innerHTML='<p class="small muted">The forum is opening soon.</p>'; return; }
+    const s=document.createElement('script'); s.src='https://giscus.app/client.js'; s.async=true; s.crossOrigin='anonymous';
+    const a={repo:FORUM.repo,'repo-id':FORUM.repoId,category:FORUM.category,'category-id':FORUM.categoryId,mapping:'specific',term:'Forum: '+T[1],strict:'1','reactions-enabled':'1','emit-metadata':'0','input-position':'top',theme:'light',lang:document.documentElement.lang==='es'?'es':'en',loading:'lazy'};
+    for(const k in a) s.setAttribute('data-'+k,a[k]); th.appendChild(s); };
+  box.addEventListener('click',e=>{ const b=e.target.closest('[data-topic]'); if(b) open(b.dataset.topic); });
+  open(FORUM_TOPICS[0][0]);
 })();
 /* ---------- offline support ---------- */
 if('serviceWorker' in navigator && location.protocol==='https:'){ addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{})); }
