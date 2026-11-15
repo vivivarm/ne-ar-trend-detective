@@ -70,7 +70,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero-brand{display:flex;align-items:center;gap:18px}.hero-logo svg{width:clamp(72px,11vw,112px);height:auto;display:block}.hero-logo .ai-tag{top:2px;right:2px}.hero-name{font:800 clamp(56px,9vw,104px)/.9 var(--f-display);letter-spacing:-.04em;color:var(--ink)}.hero-brand .fullform{margin-top:6px}
 .share-box{margin-top:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}.share-btns{display:flex;flex-wrap:wrap;gap:8px}
 .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.shots img{width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
-.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}.member{display:flex;flex-direction:column;gap:8px}.member .role{font-size:13px;color:var(--ink-3)}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.badges a{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 9px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line);color:var(--ink);text-decoration:none}.badges img{height:28px}
+.team-list{display:grid;grid-template-columns:1fr;gap:14px}.badge-grid{width:100%;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-top:8px}.badge-card{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-size:12.5px;color:var(--ink-2);text-decoration:none}.badge-card img{width:110px;height:110px;object-fit:contain;border-radius:12px;background:#fff}.member{display:flex;flex-direction:column;gap:8px}.member .role{font-size:13px;color:var(--ink-3)}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.badges a{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 9px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line);color:var(--ink);text-decoration:none}.badges img{height:28px}
 .who{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}.who legend{font-size:13px;color:var(--ink-3);margin-bottom:6px}.who label{display:inline-flex!important;flex-direction:row!important;text-transform:none!important;letter-spacing:normal!important;font-family:inherit!important;color:var(--ink)!important;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel-2);font-size:14px;cursor:pointer}.who input{accent-color:var(--accent)}
 .ebm{position:fixed;inset:0;z-index:200;background:rgba(29,21,48,.72);display:flex;flex-direction:column;padding:12px}.ebm[hidden]{display:none}.ebm-bar{display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px 14px 0 0;padding:10px 12px;color:var(--ink)}.ebm-sp{flex:1}.ebm iframe{flex:1;width:100%;border:0;background:#fff;border-radius:0 0 14px 14px}
 .news{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.news-item{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}.news-item:hover{border-color:var(--accent)}.news-item .cat{font:600 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}.news-item h3{font-size:16px;line-height:1.3}.news-item .when{font-size:12.5px;color:var(--ink-3)}
@@ -600,7 +600,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
     </section>
     <section class="section" id="team" hidden>
       <div class="section-head"><div><div class="eyebrow">Team NE-AR</div><h2>Team members and badges</h2><p>The people behind NE-AR and the credentials they bring.</p></div></div>
-      <div class="team" id="teamGrid"></div>
+      <div class="team-list" id="teamGrid"></div>
     </section>
   </div>
 </main>
@@ -1816,12 +1816,19 @@ window.MagicDetective={open,ask,parse};
 
 /* ---------- team, badges and app screens (fill these lists; empty sections stay hidden) ---------- */
 const TEAM=[
-  /* {name:'Full name', role:'Role', badges:[{label:'Credly · Badge name', url:'https://www.credly.com/badges/...', img:''},{label:'ORCID', url:'https://orcid.org/0000-...'}]} */
+  {name:'Sanskriti Verma', role:'Team leader', badges:[
+    {label:'NASA Open Science 101', img:'assets/badges/nasa-open-science-101.jpg'},
+    {label:'NASA TOPS Open Science', img:'assets/badges/nasa-tops-open-science.jpg'},
+    {label:'Office of Astronomy for Development · Project Design', img:'assets/badges/oad-project-design.jpg'},
+    {label:'Aalto University · Radical creativity on a collective level', img:'assets/badges/aalto-radical-creativity.jpg'},
+    {label:'OPSWAT · Introduction to Critical Infrastructure Protection', img:'assets/badges/opswat-icip.jpg'},
+    {label:'Google Play Academy · Store Listing Certificate', img:'assets/badges/google-play-academy-store-listing.jpg'}]}
+  /* {name:'Full name', role:'Role', badges:[{label:'Badge name', img:'assets/badges/file.jpg', url:'https://www.credly.com/badges/...'}]} */
 ];
 const SHOTS=[ /* 'docs/app/screen1.png' */ ];
 (function(){
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  if(TEAM.length){ $('#team').hidden=false; $('#teamGrid').innerHTML=TEAM.map(m=>`<div class="panel member"><h3 style="font-size:18px">${esc(m.name)}</h3>${m.role?`<span class="role">${esc(m.role)}</span>`:''}<div class="badges">${(m.badges||[]).map(b=>`<a href="${esc(b.url)}" target="_blank" rel="noopener">${b.img?`<img src="${esc(b.img)}" alt="">`:''}${esc(b.label)} ↗</a>`).join('')}</div></div>`).join(''); }
+  if(TEAM.length){ $('#team').hidden=false; $('#teamGrid').innerHTML=TEAM.map(m=>`<div class="panel member"><h3 style="font-size:18px">${esc(m.name)}</h3>${m.role?`<span class="role">${esc(m.role)}</span>`:''}<div class="badge-grid">${(m.badges||[]).map(b=>{ const inner=`<img src="${esc(b.img)}" alt="${esc(b.label)}" loading="lazy"><span>${esc(b.label)}</span>`; return b.url?`<a class="badge-card" href="${esc(b.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="badge-card">${inner}</div>`; }).join('')}</div></div>`).join(''); }
   if(SHOTS.length){ $('#shotsWrap').hidden=false; $('#shots').innerHTML=SHOTS.map(s=>`<img src="${esc(s)}" alt="Screen from the NE-AR app" loading="lazy">`).join(''); }
 })();
 
