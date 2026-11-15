@@ -653,6 +653,7 @@ EXACT: {
 "If we act":"Si actuamos",
 "Not significant":"No significativa",
 "Are nights warming in Delhi?":"¿Se están calentando las noches en Delhi?",
+"QR code to open the NE-AR AR app":"Código QR para abrir la app de RA de NE-AR",
 "Place it on your table (AR)":"Ponlo sobre tu mesa (RA)","📱 Place it on your table (AR)":"📱 Ponlo sobre tu mesa (RA)",
 "Drag to turn the model. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.":"Arrastra para girar el modelo. En el celular, toca “Ponlo sobre tu mesa” y apunta la cámara a una superficie plana. Cada bloque es un mes: 1981 al fondo, 2025 al frente.",
 "Team leader":"Líder del equipo",
