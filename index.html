@@ -555,6 +555,11 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
       </div>
       <div class="globe-wrap" id="globeWrap"><canvas id="globe" aria-label="Rotating globe with every place you can investigate"></canvas><div class="globe-cap">Drag to spin · tap any ring to see its clues in the Trend scanner</div></div>
     </section>
+  <section class="section" id="team" hidden style="padding-top:8px">
+      <div class="section-head"><div><div class="eyebrow">Team NE-AR</div><h2>Team members and badges</h2><p>The people behind NE-AR and the credentials they bring.</p></div></div>
+      <div class="team-list" id="teamGrid"></div>
+    </section>
+
     <div class="facts" id="facts"></div>
 
     <section class="section">
@@ -604,10 +609,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
         <div class="panel stack"><span class="lbl">04 · Project demo</span><h3>Project demo</h3><p class="small muted">The slides that walk through the whole project.</p><a class="btn" data-link="demo" target="_blank" rel="noopener">Open the project demo ↗</a></div>
       </div>
     </section>
-    <section class="section" id="team" hidden>
-      <div class="section-head"><div><div class="eyebrow">Team NE-AR</div><h2>Team members and badges</h2><p>The people behind NE-AR and the credentials they bring.</p></div></div>
-      <div class="team-list" id="teamGrid"></div>
-    </section>
+    
   </div>
 </main>
 
@@ -1823,8 +1825,8 @@ window.MagicDetective={open,ask,parse};
 /* ---------- team, badges and app screens (fill these lists; empty sections stay hidden) ---------- */
 const TEAM=[
   {name:'Sanskriti Verma', role:'Team leader', badges:[
-    {label:'NASA Open Science 101', img:'assets/badges/nasa-open-science-101.jpg'},
     {label:'NASA TOPS Open Science', img:'assets/badges/nasa-tops-open-science.jpg'},
+    {label:'NASA Open Science 101', img:'assets/badges/nasa-open-science-101.jpg'},
     {label:'Office of Astronomy for Development · Project Design', img:'assets/badges/oad-project-design.jpg'},
     {label:'Aalto University · Radical creativity on a collective level', img:'assets/badges/aalto-radical-creativity.jpg'},
     {label:'OPSWAT · Introduction to Critical Infrastructure Protection', img:'assets/badges/opswat-icip.jpg'},
