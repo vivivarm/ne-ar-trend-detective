@@ -463,6 +463,9 @@ img,svg,canvas,video{max-width:100%}
 .witness .w-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px;margin-top:10px}
 .witness .w-rows .lbl{display:block}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}.about-fig{margin:0;padding:12px}.about-fig img{width:100%;height:auto;display:block;border-radius:10px}.about-fig figcaption{margin-top:8px;text-align:center}
+@media (min-width:861px){.links{flex-wrap:nowrap}.links a{white-space:nowrap;padding:8px 9px}}
+@media (min-width:861px) and (max-width:1360px){.links a{font-size:13px;padding:8px 7px}}
 </style>
 
 <style id="theme-violet">
@@ -522,7 +525,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
       <span>NE-AR<small>Naturalists Explorer – Augmented Reality</small></span></a>
     <button class="lang-btn" type="button" data-lang-btn data-no-i18n aria-label="Cambiar a español" title="Español">ES</button><button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <div class="links" id="navLinks">
-      <a href="#home">Home</a><a href="#detective">Trend Detective</a><a href="#ebook">E-book</a><a href="#ar">AR App</a><a href="#learn">Courses</a><a href="#faq">FAQs</a><a href="#contact">Contact</a>
+      <a href="#home">Home</a><a href="#detective">Trend Detective</a><a href="#ebook">E-book</a><a href="#ar">AR App</a><a href="#learn">Courses</a><a href="#faq">FAQs</a><a href="#about">About</a><a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
@@ -596,7 +599,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
       <div class="deliv">
         <div class="panel stack"><span class="lbl">01 · Website and algorithm</span><h3>NE-AR Trend Detective</h3><p class="small muted">Pick a variable and a place; the Mann-Kendall test runs live on 45 years of NASA data.</p><a class="btn primary" href="#detective">Start the investigation</a><a class="btn" href="#faq">How the algorithm works</a></div>
         <div class="panel stack"><span class="lbl">02 · E-book</span><h3>NE-AR Diaries</h3><p class="small muted">A short page-turning guide to our three places and how to read the results.</p><a class="btn" data-link="ebook" target="_blank" rel="noopener">Read the e-book ↗</a></div>
-        <div class="panel stack"><span class="lbl">03 · AR app</span><h3>NE-AR in augmented reality</h3><p class="small muted">Explore our three places in 3D and place them in your room with your phone camera. Open the web version in any phone browser, or download the AR app for Android.</p><div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR web version (3D + AR) ↗</a><a class="btn" data-link="apk" target="_blank" rel="noopener">Download the Android app ↗</a><a class="btn" data-link="arWeb" target="_blank" rel="noopener">Our 3D data models ↗</a></div><figure class="qr" data-qr="apk"><div class="qr-img"></div><figcaption class="small muted">Scan to download the Android app</figcaption></figure></div><p class="small muted link-note" data-link-note></p></div>
+        <div class="panel stack"><span class="lbl">03 · AR app</span><h3>NE-AR in augmented reality</h3><p class="small muted">Explore our three places in 3D and place them in your room with your phone camera. Open the web version in the browser of any phone, Android or iPhone.</p><div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR web version (3D + AR) ↗</a><a class="btn" data-link="arWeb" target="_blank" rel="noopener">Our 3D data models ↗</a></div><figure class="qr" data-qr="arApp"><div class="qr-img"></div><figcaption class="small muted">Scan to open the web version</figcaption></figure></div><p class="small muted link-note" data-link-note></p></div>
         <div class="panel stack"><span class="lbl">04 · Project demo</span><h3>Project demo</h3><p class="small muted">The slides that walk through the whole project.</p><a class="btn" data-link="demo" target="_blank" rel="noopener">Open the project demo ↗</a></div>
       </div>
     </section>
@@ -706,8 +709,8 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
       <div class="case-end">
         <div class="panel"><div class="votes-head"><h3 style="font-size:19px">Your case file</h3><button class="btn sm" id="copyCase">Copy case file</button></div><pre class="casefile" id="caseFile"></pre></div>
         <div class="panel stack ar-end"><h3 style="font-size:19px">See it in augmented reality</h3><p class="small muted">Open the NE-AR models of this place on your phone, or read the full story in the e-book.</p>
-          <div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR web version (3D + AR) ↗</a><a class="btn" data-link="arWeb" target="_blank" rel="noopener">Our 3D data models ↗</a><a class="btn" data-link="apk" target="_blank" rel="noopener">Download the Android app ↗</a><a class="btn" data-link="ebook" target="_blank" rel="noopener">Read the e-book ↗</a></div>
-          <figure class="qr" data-qr="apk"><div class="qr-img"></div><figcaption class="small muted">Scan to download the Android app</figcaption></figure></div>
+          <div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR web version (3D + AR) ↗</a><a class="btn" data-link="arWeb" target="_blank" rel="noopener">Our 3D data models ↗</a><a class="btn" data-link="ebook" target="_blank" rel="noopener">Read the e-book ↗</a></div>
+          <figure class="qr" data-qr="arApp"><div class="qr-img"></div><figcaption class="small muted">Scan to open the web version</figcaption></figure></div>
           <p class="small muted link-note" data-link-note></p><button class="btn" id="newCase">Start a new case</button></div>
       </div>
       <div class="panel share-box"><div><h3 style="font-size:19px">Share what you found</h3><p class="small muted">Send this case to a friend, a class or your family. The more people can read the evidence, the better.</p></div>
@@ -731,7 +734,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
 <main class="page" data-page="ar" hidden>
   <div class="wrap section">
     <div class="section-head"><div><div class="eyebrow">AR App</div><h2>Hold 45 years in your hand</h2><p>Every block below is one month of real data, from 1981 at the back to 2025 at the front. Height and colour show how far that month was from normal. In the NE-AR app these models sit on your table in augmented reality.</p></div>
-      <div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR web version (3D + AR) ↗</a><a class="btn" data-link="apk" target="_blank" rel="noopener">Download the Android app ↗</a><p class="small muted link-note" data-link-note></p></div><figure class="qr" data-qr="apk"><div class="qr-img"></div><figcaption class="small muted">Scan to download the Android app</figcaption></figure></div></div>
+      <div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR web version (3D + AR) ↗</a><p class="small muted link-note" data-link-note></p></div><figure class="qr" data-qr="arApp"><div class="qr-img"></div><figcaption class="small muted">Scan to open the web version</figcaption></figure></div></div>
     <div class="ar-grid" id="arGrid"></div>
     <p class="small muted" style="margin-top:16px">Preview of the data models. Full AR scenes, including the past, the present and two possible futures, are being built for the NE-AR app.</p>
   </div>
@@ -743,7 +746,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
         <div class="panel stack"><span class="lbl">What it does</span><h3>Data you can hold</h3><p class="small muted">Each block is one month of real NASA data. Height and colour show how far that month was from normal, so a trend becomes something you can see from every side.</p></div>
         <div class="panel stack"><span class="lbl">Places</span><h3>Three Earth system hotspots</h3><p class="small muted">Western Himalaya (snow), Thar Desert (air temperature) and the Sundarbans (rainfall), the same places as the Trend Detective and the e-book.</p></div>
         <div class="panel stack"><span class="lbl">How to use it</span><h3>Point, place, explore</h3><p class="small muted">Open the app, point your camera at a flat surface and tap to place the model. Pinch to resize and walk around it to read the years.</p></div>
-        <div class="panel stack" id="dlBox"><span class="lbl">Download</span><h3>Get the app</h3><p class="small muted">Open the AR app in your phone browser (Android and iPhone), or install the Android version (.apk). You may need to allow installs from your browser.</p><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the web version ↗</a><a class="btn" data-link="apk" target="_blank" rel="noopener">Download from Dropbox ↗</a><a class="btn" data-optional data-link="apkDrive" target="_blank" rel="noopener">Download from Google Drive ↗</a></div>
+        <div class="panel stack" id="dlBox"><span class="lbl">Open it</span><h3>Use it on your phone</h3><p class="small muted">The NE-AR web version runs in the browser of any phone, Android or iPhone. Nothing to install.</p><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the web version ↗</a></div>
       </div>
       <div id="shotsWrap" hidden><h3 style="margin:28px 0 12px">Screens from the app</h3><div class="shots" id="shots"></div></div>
     </section>
@@ -786,6 +789,15 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
 </main>
 
 <!-- CONTACT -->
+<main class="page" data-page="about" hidden>
+  <div class="wrap section">
+    <div class="section-head"><div><div class="eyebrow">About</div><h2>Team NE-AR</h2><p>Naturalists Explorer – Augmented Reality. Six people in four countries: India, Senegal, the USA and Colombia.</p></div></div>
+    <div class="about-grid">
+      <figure class="panel about-fig"><img src="assets/team-ne-ar-1.jpg" width="1254" height="1254" loading="lazy" alt="Team NE-AR at work: Dr. Sanskriti Verma (team leader, New Delhi, India), Fa Syaka Diouf (Dakar, Senegal), Sachchit Balamurugan (Berkeley, USA), Viviana Andrea Vargas Martínez (Bogotá, Colombia), Prince Raj (Kolkata, India) and Sajan Balamurugan (Little Elm, USA)"><figcaption class="small muted">The team at work</figcaption></figure>
+      <figure class="panel about-fig"><img src="assets/team-ne-ar-2.jpg" width="1254" height="1254" loading="lazy" alt="Portraits of Team NE-AR: Dr. Sanskriti Verma, Fa Syaka Diouf, Sachchit Balamurugan, Viviana Andrea Vargas Martínez, Prince Raj and Sajan Balamurugan"><figcaption class="small muted">Meet the team</figcaption></figure>
+    </div>
+  </div>
+</main>
 <main class="page" data-page="contact" hidden>
   <div class="wrap section">
     <div class="two">
@@ -996,11 +1008,11 @@ const arrow=r=> r.slope>0?'▲':r.slope<0?'▼':'■';
 function toast(t){ const el=$('#toast'); el.textContent=t; el.classList.add('show'); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove('show'),2400); }
 
 /* ---------- router ---------- */
-const PAGES=['home','detective','ebook','ar','learn','faq','contact'];
-function route(){ let h=(location.hash||'#home').slice(1); if(h==='about') h='faq'; const page=PAGES.includes(h)?h:'home';
+const PAGES=['home','detective','ebook','ar','learn','faq','about','contact'];
+function route(){ let h=(location.hash||'#home').slice(1); const page=PAGES.includes(h)?h:'home';
   $$('.page').forEach(p=>p.hidden=p.dataset.page!==page); $$('#navLinks a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+page?'page':'false'));
   $('#navLinks').classList.remove('open'); $('#menuBtn').setAttribute('aria-expanded','false'); window.scrollTo(0,0);
-  ({home:renderHome,detective:render,ebook:renderBook,ar:renderAR,learn:renderLearn,faq:renderFaq,contact:()=>{}})[page]();
+  ({home:renderHome,detective:render,ebook:renderBook,ar:renderAR,learn:renderLearn,faq:renderFaq,about:()=>{},contact:()=>{}})[page]();
   globe.active = page==='home'; }
 addEventListener('hashchange',route);
 $('#menuBtn').addEventListener('click',()=>{ const o=$('#navLinks').classList.toggle('open'); $('#menuBtn').setAttribute('aria-expanded',o); });
@@ -1160,7 +1172,7 @@ function answerCard(){ const m=M(), K=KIND[m.kind], v=VV(), R=REG[S.l], c=comput
 function renderLinks(){ $$('[data-link]').forEach(a=>{ const u=LINKS[a.dataset.link]; if(u){ a.hidden=false; a.href=u; a.removeAttribute('aria-disabled'); a.removeAttribute('tabindex'); if(a.dataset.label){ a.textContent=a.dataset.label; } }
     else if(a.hasAttribute('data-optional')){ a.hidden=true; } else { if(!a.dataset.label) a.dataset.label=a.textContent; a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.setAttribute('tabindex','-1'); a.textContent=a.dataset.label.replace(/ ↗$/,'')+' · coming soon'; } });
   $$('[data-qr]').forEach(f=>{ const u=LINKS[f.dataset.qr]; const box=f.querySelector('.qr-img'); if(!u||typeof qrcode!=='function'){ f.hidden=true; return; } f.hidden=false;
-    if(box.dataset.u===u) return; if(f.dataset.qr==='apk'){ box.innerHTML='<img src="assets/qr-apk-square.png" alt="QR code to download the NE-AR Android app" width="708" height="708" style="width:100%;height:100%;display:block">'; box.dataset.u=u; return; } try{ const q=qrcode(0,'M'); q.addData(u); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true}); box.dataset.u=u; }catch(e){ f.hidden=true; } });
+    if(box.dataset.u===u) return; if(f.dataset.qr==='arApp'){ box.innerHTML='<img src="assets/qr-ar-app-square.png" alt="QR code to open the NE-AR web version" width="624" height="624" style="width:100%;height:100%;display:block">'; box.dataset.u=u; return; } try{ const q=qrcode(0,'M'); q.addData(u); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true}); box.dataset.u=u; }catch(e){ f.hidden=true; } });
   $$('[data-link-note]').forEach(p=>{ p.textContent=''; p.hidden=true; }); }
 /* step 1 */
 function aodWitness(reg){ const mo=AOD_MODIS[reg], me=SER['AOD_'+reg]; if(!mo||!me) return null; const ann=(arr,off)=>{ const out=[]; for(let y=2003;y<=2025;y++){ const v=[]; for(let i=0;i<12;i++){ const x=arr[(y-2003)*12+i+off]; if(x!=null) v.push(x); } if(v.length>=10) out.push({year:y,value:v.reduce((a,b)=>a+b,0)/v.length}); } return out; };
@@ -1853,8 +1865,6 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
 (function(){
   const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   if(!ios) return;
-  $$('[data-link="apk"]').forEach(a=>{ a.dataset.label='Download the Android app (.apk) ↗'; }); renderLinks();
-  const d=$('#dlBox'); if(d){ d.querySelector('p').textContent='The AR app is for Android (.apk). On iPhone and iPad, use the web version in Safari.'; }
 })();
 
 /* ---------- e-book inside the page, with a close button ---------- */
