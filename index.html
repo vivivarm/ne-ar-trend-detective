@@ -555,15 +555,7 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
       </div>
       <div class="globe-wrap" id="globeWrap"><canvas id="globe" aria-label="Rotating globe with every place you can investigate"></canvas><div class="globe-cap">Drag to spin · tap any ring to see its clues in the Trend scanner</div></div>
     </section>
-<section class="section" style="padding-top:8px" id="deliverables">
-      <div class="section-head"><div><div class="eyebrow">Team NE-AR · Naturalists Explorer – Augmented Reality</div><h2>Our deliverables</h2><p>Everything the team built for the Earth System Trend Detective challenge, in one place.</p></div></div>
-      <div class="deliv">
-        <div class="panel stack"><span class="lbl">01 · Website and algorithm</span><h3>NE-AR Trend Detective</h3><p class="small muted">Pick a variable and a place; the Mann-Kendall test runs live on 45 years of NASA data.</p><a class="btn primary" href="#detective">Start the investigation</a><a class="btn" href="#faq">How the algorithm works</a></div>
-        <div class="panel stack"><span class="lbl">02 · E-book</span><h3>NE-AR Diaries</h3><p class="small muted">A short page-turning guide to our three places and how to read the results.</p><a class="btn" data-link="ebook" target="_blank" rel="noopener">Read the e-book ↗</a></div>
-        <div class="panel stack"><span class="lbl">03 · AR app</span><h3>NE-AR in augmented reality</h3><p class="small muted">Explore our three places in 3D and place them in your room with your phone camera. Works in the browser on Android and iPhone.</p><div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR app (3D + AR) ↗</a><a class="btn" data-link="apk" target="_blank" rel="noopener">Download the Android app ↗</a><a class="btn" data-link="arWeb" target="_blank" rel="noopener">Our 3D data models ↗</a></div><figure class="qr" data-qr="arApp"><div class="qr-img"></div><figcaption class="small muted">Scan to open the AR app</figcaption></figure></div><p class="small muted link-note" data-link-note></p></div>
-        <div class="panel stack"><span class="lbl">04 · Project demo</span><h3>Project demo</h3><p class="small muted">The slides that walk through the whole project.</p><a class="btn" data-link="demo" target="_blank" rel="noopener">Open the project demo ↗</a></div>
-      </div>
-    </section>
+
     <section class="section" id="team" hidden style="padding-top:8px">
       <div class="section-head"><div><div class="eyebrow">Team NE-AR</div><h2>Team members and badges</h2><p>The people behind NE-AR and the credentials they bring.</p></div></div>
       <div class="team-list" id="teamGrid"></div>
@@ -598,6 +590,15 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
         <li><i>05</i><b>Normal or abnormal?</b><span>What was normal, and what is abnormal now.</span></li>
         <li><i>06</i><b>Reach a verdict</b><span>Your answer, two futures and the AR view.</span></li>
       </ol>
+    </section>
+    <section class="section" style="padding-top:8px" id="deliverables">
+      <div class="section-head"><div><div class="eyebrow">Team NE-AR · Naturalists Explorer – Augmented Reality</div><h2>Our deliverables</h2><p>Everything the team built for the Earth System Trend Detective challenge, in one place.</p></div></div>
+      <div class="deliv">
+        <div class="panel stack"><span class="lbl">01 · Website and algorithm</span><h3>NE-AR Trend Detective</h3><p class="small muted">Pick a variable and a place; the Mann-Kendall test runs live on 45 years of NASA data.</p><a class="btn primary" href="#detective">Start the investigation</a><a class="btn" href="#faq">How the algorithm works</a></div>
+        <div class="panel stack"><span class="lbl">02 · E-book</span><h3>NE-AR Diaries</h3><p class="small muted">A short page-turning guide to our three places and how to read the results.</p><a class="btn" data-link="ebook" target="_blank" rel="noopener">Read the e-book ↗</a></div>
+        <div class="panel stack"><span class="lbl">03 · AR app</span><h3>NE-AR in augmented reality</h3><p class="small muted">Explore our three places in 3D and place them in your room with your phone camera. Works in the browser on Android and iPhone.</p><div class="ar-links"><div class="stack"><a class="btn primary" data-link="arApp" target="_blank" rel="noopener">Open the NE-AR app (3D + AR) ↗</a><a class="btn" data-link="apk" target="_blank" rel="noopener">Download the Android app ↗</a><a class="btn" data-link="arWeb" target="_blank" rel="noopener">Our 3D data models ↗</a></div><figure class="qr" data-qr="arApp"><div class="qr-img"></div><figcaption class="small muted">Scan to open the AR app</figcaption></figure></div><p class="small muted link-note" data-link-note></p></div>
+        <div class="panel stack"><span class="lbl">04 · Project demo</span><h3>Project demo</h3><p class="small muted">The slides that walk through the whole project.</p><a class="btn" data-link="demo" target="_blank" rel="noopener">Open the project demo ↗</a></div>
+      </div>
     </section>
     <section class="section" id="forum" style="padding-top:8px">
       <div class="section-head"><div><div class="eyebrow">Topics and discussion</div><h2>NE-AR Environmental Forum</h2><p>Discuss the trends you find: rainfall, heat, snow, air quality and other environmental issues. Pick a topic, read what others think and share your own evidence.</p></div></div>
@@ -1112,7 +1113,7 @@ $('#homeDemo').addEventListener('click',()=>{ location.hash='#detective'; setTim
 const GUIDE={v:'rain',l:'sundarbans'};
 // Links for the deliverables, the end of the questionnaire, the AR page and the e-book. Paste new links here.
 // An empty string shows the button as "coming soon".
-const LINKS={arApp:'https://climate-detective.vercel.app/',arWeb:'https://vivivarm.github.io/ne-ar-trend-detective/#ar',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'https://docs.google.com/presentation/d/1SbZswqvLWGxeO9l4MobKohJeVDr151Gp0hYRWDdOSRM/edit?usp=sharing',apkDrive:'',appYear:2025};
+const LINKS={arApp:'https://climate-detective.vercel.app/',arWeb:'https://vivivarm.github.io/ne-ar-trend-detective/#ar',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'https://docs.google.com/presentation/d/1SbZswqvLWGxeO9l4MobKohJeVDr151Gp0hYRWDdOSRM/edit?usp=sharing',apkDrive:''};
 const S={guided:true,step:1,max:1,v:null,l:null,key:null,view:'raw',y0:1981,y1:2025,method:'mk',season:'all',tested:false,future:'act',bandYear:2025,result:null};
 const VV=()=>VARS.find(v=>v.id===S.v), M=()=>META[S.key], arrS=()=>SER[S.key];
 const STEPS=['Q1 Variable','Q2 Location','Evidence','Test','Normal?','Verdict'];
@@ -1487,7 +1488,7 @@ async function certPNG(){ const name=($('#certName').value||'').trim(); if(!name
   g.strokeStyle='#FC3D21'; g.lineWidth=4; g.beginPath(); g.moveTo(W/2-360,690); g.lineTo(W/2+360,690); g.stroke();
   g.fillStyle='#BAC2CE'; g.font=`400 34px ${F}`; g.fillText('can find, test and explain Earth system trends in NASA data.',W/2,770);
   const s=$('#certBox').dataset.score||5, d=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-  g.fillStyle='#D6E2FF'; g.font=`500 28px ${MO}`; g.fillText(`Score ${s}/5  ·  ${d}  ·  vivivarm.github.io/NEAR`,W/2,880);
+  g.fillStyle='#D6E2FF'; g.font=`500 28px ${MO}`; g.fillText(`Score ${s}/5  ·  ${d}  ·  vivivarm.github.io/ne-ar-trend-detective`,W/2,880);
   g.fillStyle='rgba(214,226,255,.6)'; g.font=`400 22px ${F}`; g.fillText('Independent student project by Team NE-AR. Not an official NASA certificate.',W/2,990);
   const a=document.createElement('a'); a.download=`NE-AR-certificate-${name.replace(/[^\p{L}\p{N}]+/gu,'-').replace(/^-|-$/g,'')||'trend-detective'}.png`; a.href=c.toDataURL('image/png'); document.body.appendChild(a); a.click(); a.remove(); toast('Certificate downloaded'); }
 $('#certDl').addEventListener('click',certPNG);
@@ -1822,7 +1823,7 @@ window.MagicDetective={open,ask,parse};
   const url=()=>location.href.split('#')[0]+'#detective';
   const msg=()=>{ const t=(document.querySelector('#tmText')||{}).textContent||''; const first=($('#caseFile')?.textContent||'').split('\n').find(l=>l.trim())||''; return ('I just investigated an Earth system trend with real NASA data on NE-AR. '+(first?first.trim()+' ':'')).slice(0,240); };
   const upd=()=>{ const u=encodeURIComponent(url()), m=encodeURIComponent(msg());
-    $('#shareWa').href=`https://wa.me/?text=${m}%20${u}`; $('#shareX').href=`https://twitter.com/intent/tweet?text=${m}&url=${u}`; $('#shareFb').href=`https://www.facebook.com/sharer/sharer.php?u=${u}`; };
+    $('#shareWa').href=`https://wa.me/?text=${m}%20${u}`; $('#shareX').href=`https://x.com/intent/post?text=${m}&url=${u}`; $('#shareFb').href=`https://www.facebook.com/sharer/sharer.php?u=${u}`; };
   ['shareWa','shareX','shareFb'].forEach(id=>$('#'+id).addEventListener('pointerdown',upd)); upd();
   $('#shareCase').addEventListener('click',async()=>{ upd(); try{ if(navigator.share){ await navigator.share({title:'NE-AR · Earth System Trend Detective',text:msg(),url:url()}); return; } }catch(e){ if(e&&e.name==='AbortError') return; } try{ await navigator.clipboard.writeText(msg()+' '+url()); toast('Link copied'); }catch(e){ toast(url()); } });
   $('#shareCopy').addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText(url()); toast('Link copied'); }catch(e){ toast(url()); } });
