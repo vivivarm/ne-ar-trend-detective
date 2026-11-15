@@ -462,6 +462,8 @@ EXACT: {
 "Uttarakhand & Himachal Pradesh, India":"Uttarakhand e Himachal Pradesh, India",
 "Sundarbans, West Bengal & Khulna, India & Bangladesh":"Sundarbans, Bengala Occidental y Khulna, India y Bangladesh",
 "Q1":"P1","Q2":"P2",
+"How to read it":"Cómo leerlo","Each bar is one month. Taller and stronger color = further from the 1981–2010 normal.":"Cada barra es un mes. Más alta y de color más fuerte = más lejos de lo normal de 1981–2010.","Below":"Por debajo","Above":"Por encima","Jan":"Ene","Dec":"Dic",
+"Drag to turn the model and scroll to zoom. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.":"Arrastra para girar el modelo y usa la rueda para acercar. En el celular, toca “Ponlo sobre tu mesa” y apunta la cámara a una superficie plana. Cada bloque es un mes: 1981 al fondo, 2025 al frente.",
 "Place it on your table (AR)":"Ponlo sobre tu mesa (RA)","📱 Place it on your table (AR)":"📱 Ponlo sobre tu mesa (RA)",
 "Drag to turn the model. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.":"Arrastra para girar el modelo. En el celular, toca “Ponlo sobre tu mesa” y apunta la cámara a una superficie plana. Cada bloque es un mes: 1981 al fondo, 2025 al frente.",
 "Team leader":"Líder del equipo",

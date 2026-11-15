@@ -76,7 +76,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .news{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.news-item{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}.news-item:hover{border-color:var(--accent)}.news-item .cat{font:600 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}.news-item h3{font-size:16px;line-height:1.3}.news-item .when{font-size:12.5px;color:var(--ink-3)}
 .lang-btn{order:5;margin-left:12px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 11px;font:700 12px/1 var(--f-mono);letter-spacing:.06em;cursor:pointer}.lang-btn:hover{background:rgba(255,255,255,.26)}
 @media (max-width:900px){.lang-btn{margin-left:auto;margin-right:8px}.menu{margin-left:0!important}}
-.ar-stage{flex:1;position:relative;background:#F5F2FB;border-radius:0 0 14px 14px;overflow:hidden;display:flex;flex-direction:column}.ar-stage model-viewer{flex:1}.ar-go{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);white-space:nowrap}.ar-help{padding:10px 14px;margin:0;background:#fff}
+.ar-stage{flex:1;position:relative;background:radial-gradient(ellipse at 50% 40%,#3A2C72 0%,#1B1440 55%,#0C0920 100%);border-radius:0 0 14px 14px;overflow:hidden;display:flex;flex-direction:column}.ar-stage model-viewer{flex:1}.ar-go{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);white-space:nowrap}.ar-help{padding:10px 14px;margin:0;background:#fff}.ar-legend{position:absolute;left:14px;top:14px;z-index:2;max-width:300px;background:rgba(12,9,32,.78);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.4;pointer-events:none}.ar-legend b{display:block;font-size:14px;margin-bottom:4px}.ar-key{display:flex;align-items:center;gap:8px;margin-top:6px}.ar-key i{flex:1;height:10px;border-radius:5px;display:block}.ar-hs{background:rgba(12,9,32,.85);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 9px;font:600 12px/1.2 inherit;white-space:nowrap;pointer-events:none}
 .forum-topics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.forum-topics button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font:600 13.5px var(--f-body,inherit);cursor:pointer}.forum-topics button[aria-selected="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}.forum-box{min-height:160px}
 .brand-logo{position:relative;display:inline-flex;flex:none}
 .brand svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 2px 8px rgba(252,61,33,.25))}
@@ -807,9 +807,14 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
 </div>
 <div class="ebm" id="arModal" hidden role="dialog" aria-modal="true" aria-label="3D model in augmented reality">
   <div class="ebm-bar"><strong id="arTitle">NE-AR model</strong><span class="ebm-sp"></span><button class="btn sm primary" id="arClose" type="button">✕ Close</button></div>
-  <div class="ar-stage"><model-viewer id="arMV" alt="3D data model" camera-controls touch-action="pan-y" shadow-intensity="1" exposure="1.1" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-orbit="35deg 60deg auto" style="width:100%;height:100%;background:#F5F2FB">
+  <div class="ar-stage"><div class="ar-legend" aria-hidden="true"><b id="arLegT">How to read it</b><span>Each bar is one month. Taller and stronger color = further from the 1981–2010 normal.</span><div class="ar-key"><span>Below</span><i id="arKeyBar"></i><span>Above</span></div></div>
+    <model-viewer id="arMV" alt="3D data model" camera-controls touch-action="pan-y" shadow-intensity="1.2" shadow-softness=".6" exposure="1.25" tone-mapping="neutral" environment-image="neutral" auto-rotate auto-rotate-delay="2500" rotation-per-second="10deg" interaction-prompt="none" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-orbit="-30deg 62deg 75%" field-of-view="28deg" min-camera-orbit="auto auto 30%" style="width:100%;height:100%;background:transparent">
+    <div class="ar-hs" slot="hotspot-1981" data-position="0 0.02m -0.34m" data-normal="0 1 0">1981</div>
+    <div class="ar-hs" slot="hotspot-2025" data-position="0 0.02m 0.34m" data-normal="0 1 0">2025</div>
+    <div class="ar-hs" slot="hotspot-jan" data-position="-0.11m 0.01m 0.33m" data-normal="0 1 0">Jan</div>
+    <div class="ar-hs" slot="hotspot-dec" data-position="0.11m 0.01m 0.33m" data-normal="0 1 0">Dec</div>
     <button slot="ar-button" class="btn primary ar-go">📱 Place it on your table (AR)</button></model-viewer>
-    <p class="small muted ar-help" id="arHelp">Drag to turn the model. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.</p></div>
+    <p class="small muted ar-help" id="arHelp">Drag to turn the model and scroll to zoom. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.</p></div>
 </div>
 <div class="toast" id="toast" role="status"></div>
 <div class="demo-bar" id="demoBar" hidden><p id="demoText"></p><button class="btn sm" id="demoStop">Stop demo</button></div>
@@ -1888,7 +1893,7 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
   document.addEventListener('click',e=>{ const w=e.target.closest('a[data-link="arWeb"]'); if(w&&!e.ctrlKey&&!e.metaKey){ e.preventDefault(); const id=AR_IDS.includes(S.l)?S.l:'sundarbans'; if(location.hash!=='#ar') location.hash='#ar'; setTimeout(()=>{ const t=document.querySelector('[data-ar="'+id+'"]'); if(t) t.click(); },350); return; } });
   document.addEventListener('click',e=>{ const b=e.target.closest('[data-ar]'); if(!b) return; last=b; load(); const id=b.dataset.ar, R=REG[id];
     mv.setAttribute('src','ar/'+id+'.glb'); mv.setAttribute('ios-src','ar/'+id+'.usdz'); mv.setAttribute('alt','3D model of '+META[R.main].name+' in '+R.name+', one block per month, 1981 to 2025');
-    $('#arTitle').textContent=R.name+' · '+META[R.main].name+' · 1981–2025'; m.hidden=false; document.body.style.overflow='hidden'; $('#arClose').focus(); });
+    $('#arTitle').textContent=R.name+' · '+META[R.main].name+' · 1981–2025'; const K=META[R.main].kind; $('#arKeyBar').style.background='linear-gradient(90deg,'+[-2.5,-1.2,0,1.2,2.5].map(q=>diverge(q,K)).join(',')+')'; mv.cameraOrbit='-30deg 62deg 75%'; m.hidden=false; document.body.style.overflow='hidden'; $('#arClose').focus(); });
   $('#arClose').addEventListener('click',close);
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!m.hidden) close(); });
   if(/#ar/.test(location.hash)) load();
