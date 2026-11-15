@@ -314,7 +314,7 @@ EXACT: {
 "Teachers, students and researchers are welcome. Tell us how you would use NE-AR in a classroom or a community project.":"Docentes, estudiantes e investigadores son bienvenidos. Cuéntanos cómo usarías NE-AR en un aula o en un proyecto comunitario.",
 "Team NE-AR":"Equipo NE-AR",
 "Team NE-AR · Naturalists Explorer – Augmented Reality":"Equipo NE-AR · Naturalists Explorer – Augmented Reality",
-"Team NE-AR, an international student team, for the NASA Space Apps Challenge. This is an independent project, not an official NASA website.":"El equipo NE-AR, un equipo internacional de estudiantes, para el NASA Space Apps Challenge. Es un proyecto independiente, no un sitio oficial de la NASA.",
+"Team NE-AR, an international student team. This is an independent project that uses open NASA data; it is not an official NASA website.":"El equipo NE-AR, un equipo internacional de estudiantes. Es un proyecto independiente que usa datos abiertos de la NASA; no es un sitio oficial de la NASA.",
 "Team members and badges":"Integrantes y credenciales",
 "Temperate rainforest coast":"Costa de bosque lluvioso templado",
 "Test":"Prueba",

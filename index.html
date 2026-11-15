@@ -1483,7 +1483,7 @@ const FAQ=[
   ['Why is the yearly temperature in the Thar flat?','The yearly average hides changes in single seasons. In the same data, spring night-time temperatures and humidity show significant trends. Try it in Step 4.'],
   ['Can this tool predict the future?','Yes, it shows where things are heading. Steps 1 to 5 analyse what has already been measured. In Step 6 the time machine shows NASA NEX-GDDP-CMIP6 projections for temperature and rainfall: what several climate models expect if emissions fall (SSP2-4.5) or keep rising (SSP5-8.5). You can compare the future with action and without action, year by year up to 2100. The future depends on our choices, so the tool shows both paths.'],
   ['Can I investigate my own place?','Yes. Choose “Explore freely”, then in Question 2 tap anywhere on the world map. On the published site this fetches live monthly data from the NASA POWER API for that exact point and runs the same tests.'],
-  ['Who made NE-AR?','Team NE-AR, an international student team, for the NASA Space Apps Challenge. This is an independent project, not an official NASA website.']];
+  ['Who made NE-AR?','Team NE-AR, an international student team. This is an independent project that uses open NASA data; it is not an official NASA website.']];
 function renderFaq(){ $('#faqList').innerHTML=FAQ.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join(''); }
 /* Contact: messages go to CONTACT_TO through FormSubmit (first message sends an activation email to that address) */
 const CONTACT_TO='c1fa009153b097868664879a4a589c91';
