@@ -1113,7 +1113,7 @@ $('#homeDemo').addEventListener('click',()=>{ location.hash='#detective'; setTim
 const GUIDE={v:'rain',l:'sundarbans'};
 // Links for the deliverables, the end of the questionnaire, the AR page and the e-book. Paste new links here.
 // An empty string shows the button as "coming soon".
-const LINKS={arApp:'https://climate-detective.vercel.app/',arWeb:'https://vivivarm.github.io/ne-ar-trend-detective/#ar',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'https://docs.google.com/presentation/d/1SbZswqvLWGxeO9l4MobKohJeVDr151Gp0hYRWDdOSRM/edit?usp=sharing',apkDrive:''};
+const LINKS={arApp:'https://climate-detective.vercel.app/',arWeb:'https://vivivarm.github.io/ne-ar-trend-detective/#ar',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'https://docs.google.com/presentation/d/1SbZswqvLWGxeO9l4MobKohJeVDr151Gp0hYRWDdOSRM/edit?usp=sharing',apkDrive:''};
 const S={guided:true,step:1,max:1,v:null,l:null,key:null,view:'raw',y0:1981,y1:2025,method:'mk',season:'all',tested:false,future:'act',bandYear:2025,result:null};
 const VV=()=>VARS.find(v=>v.id===S.v), M=()=>META[S.key], arrS=()=>SER[S.key];
 const STEPS=['Q1 Variable','Q2 Location','Evidence','Test','Normal?','Verdict'];
@@ -1160,7 +1160,7 @@ function answerCard(){ const m=M(), K=KIND[m.kind], v=VV(), R=REG[S.l], c=comput
 function renderLinks(){ $$('[data-link]').forEach(a=>{ const u=LINKS[a.dataset.link]; if(u){ a.hidden=false; a.href=u; a.removeAttribute('aria-disabled'); a.removeAttribute('tabindex'); if(a.dataset.label){ a.textContent=a.dataset.label; } }
     else if(a.hasAttribute('data-optional')){ a.hidden=true; } else { if(!a.dataset.label) a.dataset.label=a.textContent; a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.setAttribute('tabindex','-1'); a.textContent=a.dataset.label.replace(/ ↗$/,'')+' · coming soon'; } });
   $$('[data-qr]').forEach(f=>{ const u=LINKS[f.dataset.qr]; const box=f.querySelector('.qr-img'); if(!u||typeof qrcode!=='function'){ f.hidden=true; return; } f.hidden=false;
-    if(box.dataset.u===u) return; if(f.dataset.qr==='apk'){ box.innerHTML='<img src="assets/qr-apk-square.png" alt="QR code to download the NE-AR Android app" width="590" height="590" style="width:100%;height:100%;display:block">'; box.dataset.u=u; return; } try{ const q=qrcode(0,'M'); q.addData(u); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true}); box.dataset.u=u; }catch(e){ f.hidden=true; } });
+    if(box.dataset.u===u) return; if(f.dataset.qr==='apk'){ box.innerHTML='<img src="assets/qr-apk-square.png" alt="QR code to download the NE-AR Android app" width="708" height="708" style="width:100%;height:100%;display:block">'; box.dataset.u=u; return; } try{ const q=qrcode(0,'M'); q.addData(u); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true}); box.dataset.u=u; }catch(e){ f.hidden=true; } });
   $$('[data-link-note]').forEach(p=>{ p.textContent=''; p.hidden=true; }); }
 /* step 1 */
 function aodWitness(reg){ const mo=AOD_MODIS[reg], me=SER['AOD_'+reg]; if(!mo||!me) return null; const ann=(arr,off)=>{ const out=[]; for(let y=2003;y<=2025;y++){ const v=[]; for(let i=0;i<12;i++){ const x=arr[(y-2003)*12+i+off]; if(x!=null) v.push(x); } if(v.length>=10) out.push({year:y,value:v.reduce((a,b)=>a+b,0)/v.length}); } return out; };
