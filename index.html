@@ -1098,7 +1098,7 @@ $('#homeDemo').addEventListener('click',()=>{ location.hash='#detective'; setTim
 const GUIDE={v:'rain',l:'sundarbans'};
 // Links for the deliverables, the end of the questionnaire, the AR page and the e-book. Paste new links here.
 // An empty string shows the button as "coming soon".
-const LINKS={arWeb:'https://www.speaksprouts.com/delhiAR/',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'',apkDrive:'',appYear:2025};
+const LINKS={arWeb:'https://vivivarm.github.io/ne-ar-trend-detective/#ar',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'',apkDrive:'',appYear:2025};
 const S={guided:true,step:1,max:1,v:null,l:null,key:null,view:'raw',y0:1981,y1:2025,method:'mk',season:'all',tested:false,future:'act',bandYear:2025,result:null};
 const VV=()=>VARS.find(v=>v.id===S.v), M=()=>META[S.key], arrS=()=>SER[S.key];
 const STEPS=['Q1 Variable','Q2 Location','Evidence','Test','Normal?','Verdict'];
@@ -1868,6 +1868,7 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
   const m=$('#arModal'), mv=$('#arMV'); let loaded=false, last=null;
   const load=()=>{ if(loaded) return; loaded=true; const s=document.createElement('script'); s.type='module'; s.src='assets/model-viewer.min.js'; document.head.appendChild(s); };
   const close=()=>{ m.hidden=true; document.body.style.overflow=''; if(last) last.focus(); };
+  document.addEventListener('click',e=>{ const w=e.target.closest('a[data-link="arWeb"]'); if(w&&!e.ctrlKey&&!e.metaKey){ e.preventDefault(); const id=AR_IDS.includes(S.l)?S.l:'sundarbans'; if(location.hash!=='#ar') location.hash='#ar'; setTimeout(()=>{ const t=document.querySelector('[data-ar="'+id+'"]'); if(t) t.click(); },350); return; } });
   document.addEventListener('click',e=>{ const b=e.target.closest('[data-ar]'); if(!b) return; last=b; load(); const id=b.dataset.ar, R=REG[id];
     mv.setAttribute('src','ar/'+id+'.glb'); mv.setAttribute('ios-src','ar/'+id+'.usdz'); mv.setAttribute('alt','3D model of '+META[R.main].name+' in '+R.name+', one block per month, 1981 to 2025');
     $('#arTitle').textContent=R.name+' · '+META[R.main].name+' · 1981–2025'; m.hidden=false; document.body.style.overflow='hidden'; $('#arClose').focus(); });
