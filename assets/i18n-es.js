@@ -660,6 +660,8 @@ EXACT: {
 "Download the Android app (.apk) ↗":"Descargar la app para Android (.apk) ↗",
 "The AR app is for Android (.apk). On iPhone and iPad, use the web version in Safari.":"La app de RA es para Android (.apk). En iPhone y iPad, usa la versión web en Safari.",
 "Explore our three places in 3D and place them in your room with your phone camera. Open the web version in any phone browser, or download the AR app for Android.":"Explora nuestros tres lugares en 3D y ponlos en tu cuarto con la cámara del celular. Abre la versión web en el navegador de cualquier celular, o descarga la app de RA para Android.",
+"Scan to download the Android app":"Escanea para descargar la app para Android",
+"QR code to download the NE-AR Android app":"Código QR para descargar la app de NE-AR para Android",
 "Place it on your table (AR)":"Ponlo sobre tu mesa (RA)","📱 Place it on your table (AR)":"📱 Ponlo sobre tu mesa (RA)",
 "Drag to turn the model. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.":"Arrastra para girar el modelo. En el celular, toca “Ponlo sobre tu mesa” y apunta la cámara a una superficie plana. Cada bloque es un mes: 1981 al fondo, 2025 al frente.",
 "Team leader":"Líder del equipo",

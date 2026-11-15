@@ -1,7 +1,7 @@
 /* NE-AR offline support: the site and its NASA data keep working without internet.
    Pages: network first (always the newest version when online), cache as fallback.
    Files and fonts: cache first. Live NASA services and the contact form are never cached. */
-const CACHE='ne-ar-v8';
+const CACHE='ne-ar-v9';
 const CORE=['./','index.html','ar/himalaya.glb','ar/thar.glb','ar/sundarbans.glb','ar/himalaya.usdz','ar/thar.usdz','ar/sundarbans.usdz','assets/model-viewer.min.js','assets/i18n-es.js','data/cmip6-projections.json','manifest.webmanifest','assets/icon-192.png','assets/apple-touch-icon.png'];
 self.addEventListener('install',e=>{ e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())); });
 self.addEventListener('activate',e=>{ e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())); });
