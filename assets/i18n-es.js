@@ -462,9 +462,12 @@ EXACT: {
 "Uttarakhand & Himachal Pradesh, India":"Uttarakhand e Himachal Pradesh, India",
 "Sundarbans, West Bengal & Khulna, India & Bangladesh":"Sundarbans, Bengala Occidental y Khulna, India y Bangladesh",
 "Q1":"P1","Q2":"P2",
+"Place it on your table (AR)":"Ponlo sobre tu mesa (RA)","📱 Place it on your table (AR)":"📱 Ponlo sobre tu mesa (RA)",
+"Drag to turn the model. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.":"Arrastra para girar el modelo. En el celular, toca “Ponlo sobre tu mesa” y apunta la cámara a una superficie plana. Cada bloque es un mes: 1981 al fondo, 2025 al frente.",
 "Thanks! Your message was sent to the NE-AR team.":"¡Gracias! Tu mensaje llegó al equipo NE-AR."
 },
 PATTERNS: [
+[/^View in AR · (.+) ↗$/, (m,n)=>"Ver en RA · "+(window.NEAR_ES.EXACT[n]||n)+" ↗"],
 [/^(.+) · Whole year averages · (\d{4})–(\d{4}) \((\d+) years\)$/, "$1 · promedios de todo el año · $2–$3 ($4 años)"],
 [/^([▲▼]) (.+?)\/decade$/, "$1 $2/década"],
 [/^(.+) \(MERRA-2 reanalysis\)(.*)$/, "$1 (reanálisis MERRA-2)$2"],
@@ -502,7 +505,8 @@ PATTERNS: [
 [/^Thanks, (.+)! Your message was sent to the NE-AR team\.$/, "¡Gracias, $1! Tu mensaje llegó al equipo NE-AR."],
 [/^Please add your name, a valid email and a message\.$/, "Escribe tu nombre, un correo válido y un mensaje."],
 [/^Sending…$/, "Enviando…"],
-[/^Link copied$/, "Enlace copiado"]
+[/^Link copied$/, "Enlace copiado"],
+[/^(.+) · (.+) · 1981–2025$/, (m,a,b)=>(window.NEAR_ES.EXACT[a]||a)+" · "+(window.NEAR_ES.EXACT[b]||b)+" · 1981–2025"]
 ]
 };
 

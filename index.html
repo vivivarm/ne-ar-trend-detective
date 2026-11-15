@@ -76,6 +76,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .news{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.news-item{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}.news-item:hover{border-color:var(--accent)}.news-item .cat{font:600 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}.news-item h3{font-size:16px;line-height:1.3}.news-item .when{font-size:12.5px;color:var(--ink-3)}
 .lang-btn{order:5;margin-left:12px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 11px;font:700 12px/1 var(--f-mono);letter-spacing:.06em;cursor:pointer}.lang-btn:hover{background:rgba(255,255,255,.26)}
 @media (max-width:900px){.lang-btn{margin-left:auto;margin-right:8px}.menu{margin-left:0!important}}
+.ar-stage{flex:1;position:relative;background:#F5F2FB;border-radius:0 0 14px 14px;overflow:hidden;display:flex;flex-direction:column}.ar-stage model-viewer{flex:1}.ar-go{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);white-space:nowrap}.ar-help{padding:10px 14px;margin:0;background:#fff}
 .brand-logo{position:relative;display:inline-flex;flex:none}
 .brand svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 2px 8px rgba(252,61,33,.25))}
 .brand small{font:500 11px var(--f-mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:-3px}
@@ -796,6 +797,12 @@ footer{background:#2E1065;color:rgba(255,255,255,.85)}footer a{color:#fff}
   <div class="ebm-bar"><strong>NE-AR e-book</strong><span class="ebm-sp"></span><a class="btn sm" id="ebookNewTab" target="_blank" rel="noopener">Open in new tab ↗</a><button class="btn sm primary" id="ebookClose" type="button">✕ Close</button></div>
   <iframe id="ebookFrame" title="NE-AR e-book" allow="fullscreen" loading="lazy"></iframe>
 </div>
+<div class="ebm" id="arModal" hidden role="dialog" aria-modal="true" aria-label="3D model in augmented reality">
+  <div class="ebm-bar"><strong id="arTitle">NE-AR model</strong><span class="ebm-sp"></span><button class="btn sm primary" id="arClose" type="button">✕ Close</button></div>
+  <div class="ar-stage"><model-viewer id="arMV" alt="3D data model" camera-controls touch-action="pan-y" shadow-intensity="1" exposure="1.1" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-orbit="35deg 60deg auto" style="width:100%;height:100%;background:#F5F2FB">
+    <button slot="ar-button" class="btn primary ar-go">📱 Place it on your table (AR)</button></model-viewer>
+    <p class="small muted ar-help" id="arHelp">Drag to turn the model. On a phone, tap “Place it on your table” and point the camera at a flat surface. Each block is one month: 1981 at the back, 2025 at the front.</p></div>
+</div>
 <div class="toast" id="toast" role="status"></div>
 <div class="demo-bar" id="demoBar" hidden><p id="demoText"></p><button class="btn sm" id="demoStop">Stop demo</button></div>
 
@@ -1425,7 +1432,7 @@ $('#bookTabs').addEventListener('click',e=>{ const b=e.target.closest('[data-boo
 /* ---------- AR data city ---------- */
 const AR={};
 const AR_IDS=['himalaya','thar','sundarbans'];
-function renderAR(){ $('#arGrid').innerHTML=AR_IDS.map(id=>[id,REG[id]]).map(([id,R])=>`<div class="panel ar-card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="chip">${META[R.main].name}</span><span class="small mono muted" id="arY_${id}">1981–2025</span></div><canvas id="ar_${id}" aria-label="3D data model for ${R.name}"></canvas><h3>${R.name}</h3><label class="lbl" for="arS_${id}">Build up to year</label><input type="range" id="arS_${id}" min="1981" max="2025" value="2025" style="width:100%"></div>`).join('');
+function renderAR(){ $('#arGrid').innerHTML=AR_IDS.map(id=>[id,REG[id]]).map(([id,R])=>`<div class="panel ar-card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="chip">${META[R.main].name}</span><span class="small mono muted" id="arY_${id}">1981–2025</span></div><canvas id="ar_${id}" aria-label="3D data model for ${R.name}"></canvas><h3>${R.name}</h3><label class="lbl" for="arS_${id}">Build up to year</label><input type="range" id="arS_${id}" min="1981" max="2025" value="2025" style="width:100%"><button class="btn primary sm ar-open" type="button" data-ar="${id}" style="margin-top:12px;width:100%">View in AR · ${R.name} ↗</button></div>`).join('');
   AR_IDS.forEach(id=>{ const s=$('#arS_'+id); AR[id]=2025; s.addEventListener('input',()=>{ AR[id]=+s.value; $('#arY_'+id).textContent=`1981–${s.value}`; drawCity(id); }); drawCity(id); });
   if(!reduce) AR_IDS.forEach((id,i)=>{ let y=1981; const st=()=>{ AR[id]=y; $('#arS_'+id).value=y; $('#arY_'+id).textContent=`1981–${y}`; drawCity(id); if(y++<2025) setTimeout(st,28); }; setTimeout(st,i*250); }); }
 function drawCity(id){ const cv=$('#ar_'+id); if(!cv) return; const W=cv.clientWidth, H=W/1.25, d=devicePixelRatio||1; cv.width=W*d; cv.height=H*d; const g=cv.getContext('2d'); g.setTransform(d,0,0,d,0,0); g.clearRect(0,0,W,H);
@@ -1854,6 +1861,19 @@ const SHOTS=[ /* 'docs/app/screen1.png' */ ];
     box.innerHTML=out.map(e=>{ const c=(e.categories[0]||{}).title||'Event', d=e.geometry.at(-1).date, src=(e.sources[0]||{}).url||e.link;
       return `<a class="panel news-item" href="${esc(src)}" target="_blank" rel="noopener"><span class="cat">${esc(c)}</span><h3>${esc(e.title)}</h3><span class="when">Last update ${ago(d)} ↗</span></a>`; }).join('');
   }).catch(()=>{ box.innerHTML='<p class="small muted">The live NASA feed is not available right now. See the latest events on <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener">NASA EONET</a>.</p>'; });
+})();
+
+/* ---------- AR models: GLB for Android/desktop, USDZ for iPhone (AR Quick Look), via <model-viewer> ---------- */
+(function(){
+  const m=$('#arModal'), mv=$('#arMV'); let loaded=false, last=null;
+  const load=()=>{ if(loaded) return; loaded=true; const s=document.createElement('script'); s.type='module'; s.src='assets/model-viewer.min.js'; document.head.appendChild(s); };
+  const close=()=>{ m.hidden=true; document.body.style.overflow=''; if(last) last.focus(); };
+  document.addEventListener('click',e=>{ const b=e.target.closest('[data-ar]'); if(!b) return; last=b; load(); const id=b.dataset.ar, R=REG[id];
+    mv.setAttribute('src','ar/'+id+'.glb'); mv.setAttribute('ios-src','ar/'+id+'.usdz'); mv.setAttribute('alt','3D model of '+META[R.main].name+' in '+R.name+', one block per month, 1981 to 2025');
+    $('#arTitle').textContent=R.name+' · '+META[R.main].name+' · 1981–2025'; m.hidden=false; document.body.style.overflow='hidden'; $('#arClose').focus(); });
+  $('#arClose').addEventListener('click',close);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!m.hidden) close(); });
+  if(/#ar/.test(location.hash)) load();
 })();
 /* ---------- offline support ---------- */
 if('serviceWorker' in navigator && location.protocol==='https:'){ addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{})); }
