@@ -1090,7 +1090,6 @@ $('#homeDemo').addEventListener('click',()=>{ location.hash='#detective'; setTim
 // Guided tour for first-time visitors: the one path left enabled in Questions 1 and 2. Change it here.
 const GUIDE={v:'rain',l:'sundarbans'};
 // Links for the deliverables, the end of the questionnaire, the AR page and the e-book. Paste new links here.
-// appYear: set to 2026 when the new AR app links are in (hides the '2025 version' note).
 // An empty string shows the button as "coming soon".
 const LINKS={arWeb:'https://www.speaksprouts.com/delhiAR/',apk:'https://www.dropbox.com/scl/fi/et3p8otrjsk3ac27pc4bi/near_app.apk?rlkey=9e3yazl18ehz79r2jk7ebhppz&st=qiejoeoj&dl=1',ebook:'https://ne-ar-diaries-indo-gangetic.netlify.app',demo:'',apkDrive:'',appYear:2025};
 const S={guided:true,step:1,max:1,v:null,l:null,key:null,view:'raw',y0:1981,y1:2025,method:'mk',season:'all',tested:false,future:'act',bandYear:2025,result:null};
@@ -1140,7 +1139,7 @@ function renderLinks(){ $$('[data-link]').forEach(a=>{ const u=LINKS[a.dataset.l
     else if(a.hasAttribute('data-optional')){ a.hidden=true; } else { if(!a.dataset.label) a.dataset.label=a.textContent; a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.setAttribute('tabindex','-1'); a.textContent=a.dataset.label.replace(/ ↗$/,'')+' · coming soon'; } });
   $$('[data-qr]').forEach(f=>{ const u=LINKS[f.dataset.qr]; const box=f.querySelector('.qr-img'); if(!u||typeof qrcode!=='function'){ f.hidden=true; return; } f.hidden=false;
     if(box.dataset.u===u) return; try{ const q=qrcode(0,'M'); q.addData(u); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true}); box.dataset.u=u; }catch(e){ f.hidden=true; } });
-  $$('[data-link-note]').forEach(p=>{ const old=LINKS.appYear<2026; p.textContent=old?'The NE-AR app was first built last year and is being updated with the new data.':''; p.hidden=!old; }); }
+  $$('[data-link-note]').forEach(p=>{ p.textContent=''; p.hidden=true; }); }
 /* step 1 */
 function aodWitness(reg){ const mo=AOD_MODIS[reg], me=SER['AOD_'+reg]; if(!mo||!me) return null; const ann=(arr,off)=>{ const out=[]; for(let y=2003;y<=2025;y++){ const v=[]; for(let i=0;i<12;i++){ const x=arr[(y-2003)*12+i+off]; if(x!=null) v.push(x); } if(v.length>=10) out.push({year:y,value:v.reduce((a,b)=>a+b,0)/v.length}); } return out; };
   const a=mannKendall(ann(me,(2003-Y0)*12)), b=mannKendall(ann(mo,6)); return {a,b,agree:Math.sign(a.slope)===Math.sign(b.slope)&&(a.p<0.05)===(b.p<0.05)}; }
